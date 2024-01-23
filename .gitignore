@@ -9,3 +9,7 @@ build/
 
 # TypeScript
 *.tsbuildinfo
+
+# Default ignored files
+/shelf/
+/workspace.xml
