@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-interface HeaderProps {
+interface IHeaderProps {
   title: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header = ({title}: IHeaderProps): ReactElement => {
   return <header>{title}</header>;
 };
 
