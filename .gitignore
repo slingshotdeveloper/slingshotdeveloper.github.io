@@ -4,8 +4,11 @@ node_modules/
 # React
 build/
 .cache/
-.dist/
+dist/
 .DS_Store
 
 # TypeScript
 *.tsbuildinfo
+
+# VS Code
+.vscode/

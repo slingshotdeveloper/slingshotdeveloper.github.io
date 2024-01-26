@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Header from '../components/Header';
 
-const Home: React.FC = () => {
+interface IHomeProps {
+  title: string;
+}
+
+const Home = ({title}: IHomeProps): ReactElement => {
   return (
     <div>
-      <Header title="Welcome to My Portfolio" />
+      <Header title={title}/>
       <p>This is the home page content.</p>
     </div>
   );
