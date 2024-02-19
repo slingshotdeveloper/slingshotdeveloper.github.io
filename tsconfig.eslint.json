@@ -1,0 +1,10 @@
+{
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "webpack.config.js",
+      "postcss.config.js",
+      "tailwind.config.js"
+    ],
+  }
+  

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #f7f7f7;
+  }
+  html {
+    font-family: "Verdana", system-ui, sans-serif;
+  }
+  body {
+  color: #565656; /* default text color */
+}
+}
