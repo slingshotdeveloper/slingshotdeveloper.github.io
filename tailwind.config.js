@@ -6,6 +6,7 @@ module.exports = {
   ],
 	theme: {
     fontFamily: {
+      'sans': ['Ubuntu', 'sans-serif'],
       'serif': ['Georgia', 'serif'],
     },
 		extend: {
@@ -15,8 +16,8 @@ module.exports = {
         tertiary: '#92A572'
       },
       textColor: {
-        'default': '#565656'
-      }
+        default: '#565656'
+      },
     },
 	},
 	plugins: [],
