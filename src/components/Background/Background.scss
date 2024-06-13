@@ -1,0 +1,43 @@
+$holo-color: rgba(2,254,255, 0.3);
+$site-color: rgba(0, 36, 55, .95);
+
+.background {
+    background-color: $site-color;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    display: flex;
+    filter: blur(3px); 
+}
+
+.rectangle_1 {
+    position: fixed;
+    height: 15%;
+    width: 8%;
+    top: 12%;
+    left: 85%;
+    border: 4px outset $holo-color;
+    overflow: hidden;
+    display: flex;
+
+    p {
+        position: absolute;
+        overflow: hidden;
+        padding: 8px;
+        font-size: 8px;
+        animation: typing 6s linear infinite;
+    }
+}
+
+@keyframes typing {
+    from {
+        height: 0;
+        width: 0;
+    }
+    to {
+        height: 100%;
+        width: 100%;
+    }
+    
+}

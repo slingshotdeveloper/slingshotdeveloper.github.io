@@ -6,17 +6,18 @@ module.exports = {
   ],
 	theme: {
     fontFamily: {
-      'sans': ['Ubuntu', 'sans-serif'],
-      'serif': ['Georgia', 'serif'],
+      'sans': ['siteFont', 'sans-serif'],
     },
 		extend: {
       colors: {
-        primary: '#6B7D49',
-        secondary: '#f7f7f7',
-        tertiary: '#92A572'
+        primary: 'rgba(0, 61, 92, 1)',
+        secondary: 'rgba(2,254,255, 0.5)',
+        tertiary: 'rgba(50, 230, 230, 1)',
+        siteColor: 'rgba(0, 36, 55, .95)',
+        accent: '#000000'
       },
       textColor: {
-        default: '#565656'
+        default: '#E1E1E1'
       },
     },
 	},
