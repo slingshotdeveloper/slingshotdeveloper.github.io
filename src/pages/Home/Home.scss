@@ -1,0 +1,128 @@
+$blink-duration: 0.65s;
+$blink-speed: .85s;
+
+.main {
+  padding: 5% 5%;
+  height: 92vh;
+}
+
+.flex-container-row {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.flex-container-row > div {
+  margin: 2%;
+}
+
+.title-name-container {
+  height: min-content;
+  display: flex;
+  justify-content: flex-end;
+  flex: 2;
+  flex-direction: column;
+  margin-left: 5% !important;
+
+  h1 {
+    font-size: 80px;
+  }
+
+  .title_name {
+    width: min-content;
+  }
+
+  .title_text {
+    width: 0;
+    height: 50%;
+    position: relative;
+    overflow: hidden; 
+    white-space: nowrap;
+    border-right: 5px solid transparent;
+  }
+
+  .title_text_animated {
+    width: min-content;
+  }
+
+  .subtitle_text {
+    width: min-content;
+    border-right: 3px solid transparent;
+  }
+
+  .title_1_animated {
+    border-right: 5px solid theme('textColor.default');
+    animation: typing $blink-duration 4s forwards steps(24), blinkTextCursor $blink-speed 5.51 forwards;
+  }
+
+  .title_2_animated {
+    width: 0;
+    border-right: 5px solid transparent;
+    animation: typing $blink-duration 5s forwards steps(24), blinkTextCursor $blink-speed 1 4.9s forwards, borderChange 0s linear 4.9s;
+  }
+
+  .title_3_animated {
+    width: 0;
+    border-right: 5px solid transparent;
+    animation: typing $blink-duration 5.8s forwards steps(24), blinkTextCursor $blink-speed 1 5.7s forwards, borderChange 0s linear 5.7s;
+  }
+  .subtitle_animated {
+    width: 0;
+    border-right: 3px solid transparent;
+    animation: typing 1s 8.3s forwards steps(24), blinkTextCursor $blink-speed 4 6.8s forwards, borderChange 0s linear 6.8s;
+  }
+}
+
+.title-image {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-right: 5% !important;
+  flex: 2;
+}
+
+.separator {
+  min-width: 2px;
+  max-width: 5px;
+  flex: 1;
+  background-color: theme('textColor.default'); 
+  height: 75%;
+  float: left;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCursor {
+  0%, 50% {
+    background-color: transparent;
+  }
+  50.01%, 100% {
+    background-color: theme('textColor.default');
+  }
+}
+
+@keyframes blinkTextCursor{
+  0%, 50% {
+    border-right-color: theme('textColor.default');
+  }
+  50.01%, 100% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes borderChange {
+  to {
+    border-color: theme('textColor.default');
+  }
+}

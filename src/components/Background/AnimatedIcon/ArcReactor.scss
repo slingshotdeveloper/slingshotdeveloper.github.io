@@ -1,0 +1,385 @@
+:root {
+  --random-degree1: 0deg;
+  --random-degree2: 0deg;
+  --random-degree3: 0deg;
+  --random-degree4: 0deg;
+}
+
+$primary-solid: rgba(0, 61, 92, 1);
+$primary-light: rgba(0, 61, 92, 0.5);
+$secondary-solid: rgba(2, 254, 255, 1);
+$secondary-medium: rgba(2, 254, 255, 0.7);
+$secondary-light: rgba(2, 254, 255, 0.5);
+$secondary-shadow: rgba(2, 254, 255, 0.3);
+$tertiary-solid: rgba(0, 227, 255, 1);
+$tertiary-light: rgba(0, 227, 255, 0.8);
+$yellow: rgba(254, 245, 64, 0.8);
+$grey: rgba(234, 234, 234, 1);
+
+$large-border: 30px;
+$medium-border: 12px;
+$small-border: 6px;
+
+$size5: 6px;
+$size4: 5px;
+$size3: 4px;
+$size2: 3px;
+$size1: 2px;
+
+$reactor-size: 425px;
+$arc_radius: calc($reactor-size * 0.44);
+$semi-arc-radius: calc($reactor-size * 0.8 * 0.448);
+$core-arc-radius: calc($semi-arc-radius * 0.64);
+$tickmark-height: 25px;
+
+.arc_reactor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $reactor-size;
+  width: $reactor-size;
+  border-radius: 50%;
+  border: $size4 solid $secondary-medium;
+  box-shadow:
+    0px 0px 50px 15px $primary-solid,
+    inset 0px 0px 50px 15px $primary-solid;
+  transition: transform 0.25s ease-in-out;
+}
+
+.arc_reactor:hover {
+  transform: scale(1.25) rotateZ(180deg);
+  box-shadow:
+    0px 0px 50px 15px $secondary-shadow,
+    inset 0px 0px 50px 15px $secondary-shadow;
+}
+
+.semi_arc {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: $large-border solid $tertiary-light;
+  border-left: $large-border solid transparent;
+  animation: rotate 30s linear infinite;
+}
+
+.semi_arc_tickmark_arc {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: $large-border;
+  padding-right: 1px;
+  animation: rotate 30s linear infinite;
+
+  .semi_arc_tickmarks {
+    li {
+      width: 2px;
+      height: $large-border;
+      background: $primary-light;
+      position: absolute;
+    }
+    li:first-child {
+      transform: rotate(153deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(2) {
+      transform: rotate(171deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(3) {
+      transform: rotate(189deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(4) {
+      transform: rotate(207deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(5) {
+      transform: rotate(225deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(6) {
+      transform: rotate(243deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(7) {
+      transform: rotate(261deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(8) {
+      transform: rotate(279deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(9) {
+      transform: rotate(297deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(10) {
+      transform: rotate(315deg) translateY($semi-arc-radius);
+    }
+    li:nth-child(11) {
+      transform: rotate(333deg) translateY($semi_arc_radius);
+    }
+    li:nth-child(12) {
+      transform: rotate(351deg) translateY($semi_arc_radius);
+    }
+    li:nth-child(13) {
+      transform: rotate(9deg) translateY($semi_arc_radius);
+    }
+    li:nth-child(14) {
+      transform: rotate(27deg) translateY($semi_arc-radius);
+    }
+    li:nth-child(15) {
+      transform: rotate(45deg) translateY($semi_arc_radius);
+    }
+  }
+}
+
+.semi_arc_yellow {
+  width: 95%;
+  height: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: $size3 solid $yellow;
+  border-right: $size1 dotted $yellow;
+  border-bottom: $size3 solid transparent;
+  border-left: 10px solid transparent;
+  animation: random-rotate 8s linear infinite;
+}
+
+.semi_arc_2 {
+  width: 88%;
+  height: 88%;
+  position: absolute;
+  border-radius: 50%;
+  border: $medium-border solid $secondary-shadow;
+  border-top: $medium-border solid transparent;
+  border-bottom: $medium-border solid transparent;
+  animation: counter-rotate 5s linear infinite; 
+}
+
+.core {
+  width: 75%;
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  border-radius: 50%;
+  border: $medium-border solid $secondary-light;
+  animation: rotate 2s linear infinite;
+  background: radial-gradient(circle, $primary-solid, theme('colors.siteColor'));;
+
+  .core_ball {
+    width: $medium-border;
+    height: $medium-border;
+    position: absolute;
+    border-radius: 50%;
+    background-color: $primary-solid;
+    transform: translateY($core-arc-radius);
+  }
+}
+
+.tickmarks_arc {
+  height: $reactor-size;
+  width: $reactor-size;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: $tickmark-height;
+  padding-right: 1px;
+
+  .tickmarks {
+    li {
+      width: 1px;
+      height: $tickmark-height;
+      background: theme("colors.secondary");
+      position: absolute;
+      animation: color_ease 3s infinite ease-in-out;
+    }
+    li:first-child {
+      transform: rotate(9deg) translateY($arc_radius);
+    }
+    li:nth-child(2) {
+      transform: rotate(18deg) translateY($arc_radius);
+    }
+    li:nth-child(3) {
+      transform: rotate(27deg) translateY($arc_radius);
+    }
+    li:nth-child(4) {
+      transform: rotate(36deg) translateY($arc_radius);
+    }
+    li:nth-child(5) {
+      transform: rotate(45deg) translateY($arc_radius);
+    }
+    li:nth-child(6) {
+      transform: rotate(54deg) translateY($arc_radius);
+    }
+    li:nth-child(7) {
+      transform: rotate(63deg) translateY($arc_radius);
+    }
+    li:nth-child(8) {
+      transform: rotate(72deg) translateY($arc_radius);
+    }
+    li:nth-child(9) {
+      transform: rotate(81deg) translateY($arc_radius);
+    }
+    li:nth-child(10) {
+      transform: rotate(90deg) translateY($arc_radius);
+    }
+    li:nth-child(11) {
+      transform: rotate(99deg) translateY($arc_radius);
+    }
+    li:nth-child(12) {
+      transform: rotate(108deg) translateY($arc_radius);
+    }
+    li:nth-child(13) {
+      transform: rotate(117deg) translateY($arc_radius);
+    }
+    li:nth-child(14) {
+      transform: rotate(126deg) translateY($arc-radius);
+    }
+    li:nth-child(15) {
+      transform: rotate(135deg) translateY($arc_radius);
+    }
+    li:nth-child(16) {
+      transform: rotate(144deg) translateY($arc_radius);
+    }
+    li:nth-child(17) {
+      transform: rotate(153deg) translateY($arc_radius);
+    }
+    li:nth-child(18) {
+      transform: rotate(162deg) translateY($arc_radius);
+    }
+    li:nth-child(19) {
+      transform: rotate(171deg) translateY($arc_radius);
+    }
+    li:nth-child(20) {
+      transform: rotate(180deg) translateY($arc_radius);
+    }
+    li:nth-child(21) {
+      transform: rotate(189deg) translateY($arc_radius);
+    }
+    li:nth-child(22) {
+      transform: rotate(198deg) translateY($arc_radius);
+    }
+    li:nth-child(23) {
+      transform: rotate(207deg) translateY($arc_radius);
+    }
+    li:nth-child(24) {
+      transform: rotate(216deg) translateY($arc_radius);
+    }
+    li:nth-child(25) {
+      transform: rotate(225deg) translateY($arc_radius);
+    }
+    li:nth-child(26) {
+      transform: rotate(234deg) translateY($arc_radius);
+    }
+    li:nth-child(27) {
+      transform: rotate(243deg) translateY($arc_radius);
+    }
+    li:nth-child(28) {
+      transform: rotate(252deg) translateY($arc_radius);
+    }
+    li:nth-child(29) {
+      transform: rotate(261deg) translateY($arc_radius);
+    }
+    li:nth-child(30) {
+      transform: rotate(270deg) translateY($arc_radius);
+    }
+    li:nth-child(31) {
+      transform: rotate(279deg) translateY($arc_radius);
+    }
+    li:nth-child(32) {
+      transform: rotate(288deg) translateY($arc_radius);
+    }
+    li:nth-child(33) {
+      transform: rotate(297deg) translateY($arc_radius);
+    }
+    li:nth-child(34) {
+      transform: rotate(306deg) translateY($arc_radius);
+    }
+    li:nth-child(35) {
+      transform: rotate(315deg) translateY($arc_radius);
+    }
+    li:nth-child(36) {
+      transform: rotate(324deg) translateY($arc_radius);
+    }
+    li:nth-child(37) {
+      transform: rotate(333deg) translateY($arc_radius);
+    }
+    li:nth-child(38) {
+      transform: rotate(342deg) translateY($arc_radius);
+    }
+    li:nth-child(39) {
+      transform: rotate(351deg) translateY($arc_radius);
+    }
+    li:nth-child(40) {
+      transform: rotate(360deg) translateY($arc_radius);
+    }
+  }
+}
+
+@keyframes color_ease {
+  0% {
+    background: $secondary-solid;
+  }
+  50% {
+    background: $secondary-shadow;
+  }
+  100% {
+    background: $secondary-solid;
+  }
+}
+
+@keyframes border-color-ease {
+  0% {
+    border-color: $tertiary-light;
+  }
+  50% {
+    border-color: $tertiary-solid;
+  }
+  100% {
+    border-color: $tertiary-light;
+  }
+  
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes counter-rotate {
+  0% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes random-rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  20% {
+    transform: rotateZ(var(--random-degree1));
+  }
+  40% {
+    transform: rotateZ(var(--random-degree2));
+  }
+  60% {
+    transform: rotateZ(var(--random-degree3));
+  }
+  80% {
+    transform: rotateZ(var(--random-degree4));
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}

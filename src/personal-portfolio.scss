@@ -3,54 +3,36 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'siteFont';
+    src: url('./assets/fonts/Arame\ Thin.ttf') format('truetype');
+  }
+  
+  html, body {
+    font-family: 'siteFont', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: theme("textColor.default");
+  }
+  
   body {
-    color: theme("textColor.default"); /* default text color */
-    font-weight: 150;
     font-size: 14pt;
   }
 
   h1 {
-    font-size: 34pt;
-    font-weight: 250;
+    font-size: 68px;
   }
 
-  /* Media query for mobile devices */
-  @media only screen and (max-width: 640px) {
-    body {
-      background-image: url("./assets/mountain-mobile.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
+  h2 {
+    font-size: 24px;
   }
-}
 
-#background {
-  position: fixed;
-  background-color: black;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.pixel {
-  position: absolute;
-  width: 2.5px;
-  height: 2.5px;
-  background-color: white;
-  border-radius: 50%;
-  animation:
-    move 10s linear infinite,
-}
-
-@keyframes move {
-  0% {
-    transform: translate(0, 0);
+  h3 {
+    font-size: 16px;
   }
-  100% {
-    transform: translate(100vh, 100vw);
+  
+  h4 {
+    font-size: 12px;
   }
 }

@@ -1,0 +1,10 @@
+#main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 640px) {
+}
