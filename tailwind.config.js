@@ -13,7 +13,8 @@ module.exports = {
         primary: 'rgba(0, 61, 92, 1)',
         secondary: 'rgba(2,254,255, 0.5)',
         tertiary: 'rgba(50, 230, 230, 1)',
-        siteColor: 'rgba(0, 36, 55, .95)',
+        yellow: 'rgba(254, 245, 64, 0.8)',
+        siteColor: 'rgba(11, 34, 41, 1)',
         accent: '#000000'
       },
       textColor: {

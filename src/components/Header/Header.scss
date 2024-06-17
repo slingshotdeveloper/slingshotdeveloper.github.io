@@ -1,0 +1,34 @@
+$holo-color: rgba(2,254,255, 0.5);
+
+.navbar {
+  background-color: transparent;
+  padding: 1rem 0;
+
+  .navbar-container {
+    margin-left: 2.5rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.125rem;
+    .logo-img {
+      height: 3.5rem;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    & > li {
+      margin-right: 2.5rem;
+      margin-left: 0.5rem;
+    }
+    .nav-link {
+      &:hover {
+        color: $holo-color;
+      }
+    }
+  }
+}
