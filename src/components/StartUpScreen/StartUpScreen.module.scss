@@ -1,4 +1,5 @@
-$progress-bar: rgba(2,254,255, 0.8);
+$progress-bar: rgba(2,254,255, 0.5);
+$site-color: rgba(11, 34, 41, 1);
 
 .screen {
   top: 0;
@@ -6,7 +7,7 @@ $progress-bar: rgba(2,254,255, 0.8);
   height: 100%;
   width: 100%;
   position: fixed;
-  background-color: black;
+  background-color: $site-color;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +41,7 @@ $progress-bar: rgba(2,254,255, 0.8);
     align-items: center;
     justify-content: center;
 
-    h2, div {
+    h4, div {
       color: $progress-bar;
     }
   }
