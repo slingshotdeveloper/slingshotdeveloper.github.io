@@ -5,7 +5,7 @@ const Footer = (): ReactElement => {
 
   return (
     <div className={styles.container}>
-        this is a test
+        Connect with me on LinkedIn
     </div>
   );
 }

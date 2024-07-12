@@ -28,7 +28,7 @@ const StartUpScreen: React.FC = () => {
       </div>
       <div className={styles.powering_up_container}>
         <div>{progress}%</div>
-        <h3>Powering Up...</h3>
+        <h4>Powering Up...</h4>
       </div>
     </div>
   );

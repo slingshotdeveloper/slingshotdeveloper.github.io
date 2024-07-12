@@ -18,7 +18,7 @@ module.exports = {
         accent: '#000000'
       },
       textColor: {
-        default: '#E1E1E1'
+        default: 'rgba(190, 190, 190, 1)'
       },
     },
 	},
