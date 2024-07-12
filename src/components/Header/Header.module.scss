@@ -2,30 +2,45 @@ $holo-color: rgba(2,254,255, 0.5);
 
 .navbar {
   background-color: transparent;
-  padding: 1rem 0;
+  padding: 1rem 0 0 0;
+  height: 5rem;
 
-  .navbar-container {
+  .navbar_container {
     margin-left: 2.5rem;
     margin-right: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
 
   .logo {
     font-size: 1.125rem;
-    .logo-img {
+    .logo_img {
       height: 3.5rem;
     }
   }
 
-  .nav-links {
+  .nav_links {
     display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
     & > li {
       margin-right: 2.5rem;
       margin-left: 0.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
     }
-    .nav-link {
+
+    .nav_link {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
       &:hover {
         color: $holo-color;
       }

@@ -1,21 +1,21 @@
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import avatar from '../../assets/images/avatar.png';
-import './Header.scss';
+import styles from './Header.module.scss';
 
 const Header = (): ReactElement => {
   return (
     <header>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/' className='logo'>
-            <img src={avatar} alt='Logo' className='logo-img' />
+      <nav className={styles.navbar}>
+        <div className={styles.navbar_container}>
+          <Link to='/' className={styles.logo}>
+            <img src={avatar} alt='Logo' className={styles.logo_img} />
           </Link>
-          <ul className='nav-links'>
-            <li><Link to='/' className='nav-link'>Home</Link></li>
-            <li><Link to='/about' className='nav-link'>About</Link></li>
-            <li><Link to='/projects' className='nav-link'>Projects</Link></li>
-            <li><Link to='/contact' className='nav-link'>Contact</Link></li>
+          <ul className={styles.nav_links}>
+            <li><Link to='/' className={styles.nav_link}>Home</Link></li>
+            <li><Link to='/about' className={styles.nav_link}>About</Link></li>
+            <li><Link to='/work' className={styles.nav_link}>Work</Link></li>
+            <li><Link to='/contact' className={styles.nav_link}>Contact</Link></li>
           </ul>
         </div>
       </nav>

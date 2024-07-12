@@ -1,0 +1,41 @@
+$site-color: rgba(11, 34, 41, 1);
+
+#main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.site_background {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1001;
+  background-color: $site-color;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 640px) {
+}
+
+@keyframes flicker-in {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: .6;
+  }
+  20% {
+    opacity: .3;
+  }
+  30%, 50% {
+    opacity: .8;
+  }
+  40% {
+    opacity: .6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -7,17 +7,32 @@
     font-family: 'siteFont';
     src: url('./assets/fonts/Arame\ Thin.ttf') format('truetype');
   }
-  
-  html, body {
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: auto;
+  }
+  *::-webkit-scrollbar-track {
+    background: rgba(20, 82, 91, 1);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(57, 133, 146, 1);
+    border-radius: 10px;
+    border: 3px solid rgba(20, 82, 91, 1);
+  }
+
+  html,
+  body {
     font-family: 'siteFont', sans-serif;
     height: 100%;
     margin: 0;
     padding: 0;
-    color: theme("textColor.default");
+    color: theme('textColor.default');
   }
-  
+
   body {
     font-size: 14pt;
+    overflow-x: hidden;
   }
 
   h1 {
@@ -25,14 +40,14 @@
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 48px;
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 24px;
   }
-  
+
   h4 {
-    font-size: 12px;
+    font-size: 16px;
   }
 }

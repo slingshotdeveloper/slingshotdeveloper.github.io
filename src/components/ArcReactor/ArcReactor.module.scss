@@ -27,9 +27,9 @@ $size2: 3px;
 $size1: 2px;
 
 $reactor-size: 425px;
-$arc_radius: calc($reactor-size * 0.44);
-$semi-arc-radius: calc($reactor-size * 0.8 * 0.448);
-$core-arc-radius: calc($semi-arc-radius * 0.64);
+$arc_radius: calc($reactor-size * 0.42);
+$semi-arc-radius: calc($reactor-size * 0.8 * 0.415);
+$core-arc-radius: calc($semi-arc-radius * 0.63);
 $tickmark-height: 25px;
 
 .arc_reactor {
@@ -47,16 +47,16 @@ $tickmark-height: 25px;
   transition: transform 0.25s ease-in-out;
 }
 
-.arc_reactor:hover {
-  transform: scale(1.25) rotateZ(180deg);
-  box-shadow:
-    0px 0px 50px 15px $secondary-shadow,
-    inset 0px 0px 50px 15px $secondary-shadow;
-}
+// .arc_reactor:hover {
+//   transform: scale(1.25) rotateZ(180deg);
+//   box-shadow:
+//     0px 0px 50px 15px $secondary-shadow,
+//     inset 0px 0px 50px 15px $secondary-shadow;
+// }
 
 .semi_arc {
-  width: 80%;
-  height: 80%;
+  width: 75%;
+  height: 75%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,8 +170,8 @@ $tickmark-height: 25px;
   background: radial-gradient(circle, $primary-solid, theme('colors.siteColor'));;
 
   .core_ball {
-    width: $medium-border;
-    height: $medium-border;
+    width: 14px;
+    height: 14px;
     position: absolute;
     border-radius: 50%;
     background-color: $primary-solid;

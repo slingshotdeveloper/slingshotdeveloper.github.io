@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./StartUpScreen.scss";
+import styles from "./StartUpScreen.module.scss";
 
 const StartUpScreen: React.FC = () => {
   const [progress, setProgress] = useState(0);
@@ -18,17 +18,17 @@ const StartUpScreen: React.FC = () => {
       }, 25);
 
       return () => clearInterval(interval);
-    }, 1150);
+    }, 750);
   }, []);
 
   return (
-    <div className={finishedStartUp ? "hide" : "screen"}>
-      <div className="progress_bar_container">
-        <div className="progress_bar" style={{ width: `${progress}%` }}></div>
+    <div className={finishedStartUp ? `${styles.hide}` : `${styles.screen}`}>
+      <div className={styles.progress_bar_container}>
+        <div className={styles.progress_bar} style={{ width: `${progress}%` }}></div>
       </div>
-      <div className="powering_up_container">
+      <div className={styles.powering_up_container}>
         <div>{progress}%</div>
-        <h2>Powering Up...</h2>
+        <h3>Powering Up...</h3>
       </div>
     </div>
   );

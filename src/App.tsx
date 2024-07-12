@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.scss";
+import styles from "./App.module.scss";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
-import Background from "./components/Background/Background";
-import StartUpScreen from "./components/StartUpScreen/StartUpScreen";
+import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
   
   return (
-    <div id='main'>
-      <Background />
+    <div id={styles.main}>
+      <div className={styles.site_background}/>
         <Router>
           <Header />
           <Routes>
@@ -20,6 +19,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<div/>} />
           </Routes>
         </Router>
+        <Footer/>
     </div>
   );
 };
