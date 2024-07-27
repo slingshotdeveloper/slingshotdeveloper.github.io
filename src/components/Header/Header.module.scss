@@ -2,8 +2,12 @@ $holo-color: rgba(2,254,255, 0.5);
 
 .navbar {
   background-color: transparent;
+  position: relative;
+  z-index: 9999;
   padding: 1rem 0 0 0;
   height: 5rem;
+  max-height: 5rem;
+  margin-bottom: 1rem;
 
   .navbar_container {
     margin-left: 2.5rem;
