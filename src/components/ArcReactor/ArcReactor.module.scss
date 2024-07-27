@@ -29,7 +29,7 @@ $size1: 2px;
 $reactor-size: 425px;
 $arc_radius: calc($reactor-size * 0.42);
 $semi-arc-radius: calc($reactor-size * 0.8 * 0.415);
-$core-arc-radius: calc($semi-arc-radius * 0.63);
+$core-arc-radius: calc($semi-arc-radius * 0.625);
 $tickmark-height: 25px;
 
 .arc_reactor {

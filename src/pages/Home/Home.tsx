@@ -10,12 +10,22 @@ import { ReactComponent as ComputerIcon } from '../../assets/icons/computer.svg'
 import { ReactComponent as ReactIcon } from '../../assets/icons/react.svg';
 import { ReactComponent as MailIcon } from '../../assets/icons/mail.svg';
 
-const Home = (): ReactElement => {
+interface HomeProps {
+  onNavigate: (path: string) => void;
+}
+
+const Home = ({ onNavigate }: HomeProps): ReactElement => {
   const [shouldRunAnimation, setShouldRunAnimation] = useState(() => {
     return sessionStorage.getItem('hasRunAnimation') === null;
   });
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
   const targetRefsBorderFade = useIntersectionObserver(styles.fade_in, 0.1);
+
+  const handleNavigation = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, path: string) => {
+    event.preventDefault();
+    onNavigate(path);
+  };
+  
 
   useEffect(() => {
     const hasRunAnimation = sessionStorage.getItem('hasRunAnimation');
@@ -130,7 +140,7 @@ const Home = (): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href="/about">
+              <a onClick={(e) => handleNavigation(e, '/about')}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.user_icon}`}
@@ -154,7 +164,7 @@ const Home = (): ReactElement => {
                   and the things I love to do!
                 </p>
               </div>
-              <a href="/about">
+              <a onClick={(e) => handleNavigation(e, '/about')}>
                 <button>About Me</button>
               </a>
             </div>
@@ -168,7 +178,7 @@ const Home = (): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href="/work">
+              <a onClick={(e) => handleNavigation(e, '/work')}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.computer_icon}`}
@@ -196,7 +206,7 @@ const Home = (): ReactElement => {
                   and read testimonials from satisfied clients.
                 </p>
               </div>
-              <a href="/work">
+              <a onClick={(e) => handleNavigation(e, '/work')}>
                 <button>Freelance Work</button>
               </a>
             </div>
@@ -210,7 +220,7 @@ const Home = (): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href="/work">
+              <a onClick={(e) => handleNavigation(e, '/work')}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.react_icon}`}
@@ -237,7 +247,7 @@ const Home = (): ReactElement => {
                   done!
                 </p>
               </div>
-              <a href="/work">
+              <a onClick={(e) => handleNavigation(e, '/work')}>
                 <button>Personal Projects</button>
               </a>
             </div>
@@ -251,7 +261,7 @@ const Home = (): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href="/contact">
+              <a onClick={(e) => handleNavigation(e, '/contact')}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.mail_icon}`}
@@ -275,7 +285,7 @@ const Home = (): ReactElement => {
                 For inquiries about hiring me for your business needs, click the button below and send me a message. I look forward to discussing how we can collaborate to achieve your vision! 
                 </p>
               </div>
-              <a href="/contact">
+              <a onClick={(e) => handleNavigation(e, '/contact')}>
                 <button>Contact Me</button>
               </a>
             </div>

@@ -15,7 +15,7 @@ $text-color: theme('textColor.default');
 }
 
 .first_section {
-  height: 90vh;
+  height: calc(100vh - 5rem);
   margin-bottom: 10%;
 }
 

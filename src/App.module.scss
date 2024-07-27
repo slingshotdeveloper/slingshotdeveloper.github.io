@@ -1,6 +1,8 @@
 $site-color: rgba(11, 34, 41, 1);
+$page-transition-background: rgba(11, 34, 41, 0.6);
+$page-transition-border: rgba(20, 82, 91, 1);
 
-#main {
+.main {
   height: 100%;
   width: 100%;
   display: flex;
@@ -13,6 +15,28 @@ $site-color: rgba(11, 34, 41, 1);
   position: fixed;
   z-index: -1001;
   background-color: $site-color;
+}
+
+.page_transition {
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0px solid $page-transition-border;
+  background: $page-transition-background;
+  transition: height 0.5s, width 0.5s, border 0.5s;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.active {
+  height: calc(100vh - 6rem);
+  width: 100vw;
+  overflow: hidden;
+  border: 8px solid $page-transition-border;
+  visibility: visible;
+  backdrop-filter: blur(12px);
 }
 
 /* Media query for mobile devices */
