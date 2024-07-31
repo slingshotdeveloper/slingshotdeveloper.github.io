@@ -2,30 +2,23 @@ import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import avatar from '../../assets/images/avatar.png';
 import styles from './Header.module.scss';
+import { useNavigation } from '../../context/NavigationContext';
 
-interface HeaderProps {
-  onNavigate: (path: string) => void;
-}
-
-const Header = ({ onNavigate }: HeaderProps): ReactElement => {
-
-  const handleNavigation = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, path: string) => {
-    event.preventDefault();
-    onNavigate(path);
-  };
+const Header = (): ReactElement => {
+  const { navigateWithTransition } = useNavigation();
   
   return (
     <header>
       <nav className={styles.navbar}>
         <div className={styles.navbar_container}>
-          <Link to='/' className={styles.logo} onClick={(e) => handleNavigation(e, '/')}>
+          <Link to='/' className={styles.logo} onClick={(e) => { e.preventDefault(); navigateWithTransition('/')}}>
             <img src={avatar} alt='Logo' className={styles.logo_img} />
           </Link>
           <ul className={styles.nav_links}>
-            <li><Link to='/' className={styles.nav_link} onClick={(e) => handleNavigation(e, '/')}>Home</Link></li>
-            <li><Link to='/about' className={styles.nav_link} onClick={(e) => handleNavigation(e, '/about')}>About</Link></li>
-            <li><Link to='/work' className={styles.nav_link} onClick={(e) => handleNavigation(e, '/work')}>Work</Link></li>
-            <li><Link to='/contact' className={styles.nav_link} onClick={(e) => handleNavigation(e, '/contact')}>Contact</Link></li>
+            <li><Link to='/' className={styles.nav_link} onClick={(e) =>{e.preventDefault(); navigateWithTransition('/')}}>Home</Link></li>
+            <li><Link to='/about' className={styles.nav_link} onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>About</Link></li>
+            <li><Link to='/work' className={styles.nav_link} onClick={(e) => { e.preventDefault(); navigateWithTransition('/work')}}>Work</Link></li>
+            <li><Link to='/contact' className={styles.nav_link} onClick={(e) => { e.preventDefault(); navigateWithTransition('/')}}>Contact</Link></li>
           </ul>
         </div>
       </nav>
