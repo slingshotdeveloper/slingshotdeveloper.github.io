@@ -19,22 +19,22 @@ $page-transition-border: rgba(20, 82, 91, 1);
 
 .page_transition {
   position: fixed;
-  top: 6rem;
+  top: 0;
   left: 0;
   width: 0;
-  height: 0;
+  height: 100vh;
   border: 0px solid $page-transition-border;
   background: $page-transition-background;
-  transition: height 0.5s, width 0.5s, border 0.5s;
+  transition: width 0.5s, border 0.5s;
   z-index: 10;
   pointer-events: none;
 }
 
 .active {
-  height: calc(100vh - 6rem);
   width: 100vw;
   overflow: hidden;
   border: 8px solid $page-transition-border;
+  border-radius: 0px;
   visibility: visible;
   backdrop-filter: blur(12px);
 }
