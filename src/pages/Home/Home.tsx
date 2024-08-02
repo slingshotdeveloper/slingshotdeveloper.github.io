@@ -143,7 +143,7 @@ const Home = (): ReactElement => {
                     style={{
                       stroke: 'rgba(2, 254, 255, 0.5)',
                       height: '65%',
-                      width: '65%',
+                      width: '65%'
                     }}
                   />
                 </div>
