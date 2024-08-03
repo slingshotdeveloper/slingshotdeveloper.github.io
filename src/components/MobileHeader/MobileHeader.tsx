@@ -12,6 +12,15 @@ export const MobileHeader = (): ReactElement => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const handleNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    path: string,
+  ) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    navigateWithTransition(path);
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar_container}>
@@ -19,14 +28,11 @@ export const MobileHeader = (): ReactElement => {
           <Link
             to="/"
             className={styles.logo}
-            onClick={(e) => {
-              e.preventDefault();
-              navigateWithTransition('/');
-            }}
+            onClick={(e) => handleNavigation(e, '/')}
           >
             <img src={avatar} alt="Logo" className={styles.logo_img} />
           </Link>
-          <div className={styles.hamburger_menu} onClick={toggleMenuOpen}>
+          <div className={`${styles.hamburger_menu} ${isMenuOpen && styles.expanded}`} onClick={toggleMenuOpen}>
             <div className={styles.hamburger_menu_line} />
             <div className={styles.hamburger_menu_line} />
             <div className={styles.hamburger_menu_line} />
@@ -35,10 +41,10 @@ export const MobileHeader = (): ReactElement => {
         <div className={`${styles.nav_links} ${isMenuOpen && styles.expanded}`}>
           <div className={styles.nav_link}>
             <Link
+              className={styles.link}
               to="/"
               onClick={(e) => {
-                e.preventDefault();
-                navigateWithTransition('/');
+                handleNavigation(e, '/');
               }}
             >
               Home
@@ -46,10 +52,10 @@ export const MobileHeader = (): ReactElement => {
           </div>
           <div className={styles.nav_link}>
             <Link
+              className={styles.link}
               to="/about"
               onClick={(e) => {
-                e.preventDefault();
-                navigateWithTransition('/about');
+                handleNavigation(e, '/about');
               }}
             >
               About
@@ -57,10 +63,10 @@ export const MobileHeader = (): ReactElement => {
           </div>
           <div className={styles.nav_link}>
             <Link
+              className={styles.link}
               to="/work"
               onClick={(e) => {
-                e.preventDefault();
-                navigateWithTransition('/work');
+                handleNavigation(e, '/work');
               }}
             >
               Work
@@ -68,10 +74,10 @@ export const MobileHeader = (): ReactElement => {
           </div>
           <div className={styles.nav_link}>
             <Link
+              className={styles.link}
               to="/contact"
               onClick={(e) => {
-                e.preventDefault();
-                navigateWithTransition('/');
+                handleNavigation(e, '/contact');
               }}
             >
               Contact

@@ -1,5 +1,6 @@
 $menu-background: rgba(11, 34, 41, 0.6);
 $menu-lines: rgba(190, 190, 190, 1);
+$holo-color: rgba(2, 254, 255, 0.5);
 
 .navbar {
   background-color: transparent;
@@ -25,6 +26,7 @@ $menu-lines: rgba(190, 190, 190, 1);
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  z-index: 0;
   align-items: center;
 }
 
@@ -35,18 +37,53 @@ $menu-lines: rgba(190, 190, 190, 1);
   }
 }
 
-.nav_links {
+.hamburger_menu {
   display: flex;
-  position: relative;
-  background-color: $menu-background;
   flex-direction: column;
-  backdrop-filter: blur(12px);
-  list-style: none;
-  gap: 6px;
+  gap: 5px;
   width: 100%;
-  transition: all 1s ease-in-out;
+  max-width: 25px;
+  cursor: pointer;
 
   &.expanded {
+    .hamburger_menu_line {
+      &:nth-child(1) {
+        transform: translateY(8px) rotate(315deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-8px) rotate(-315deg);
+      }
+    }
+  }
+}
+
+.hamburger_menu_line {
+  width: 100%;
+  height: 3px;
+  background-color: $menu-lines;
+  transition: transform .5s ease-in-out, opacity .25s ease-out;
+}
+
+
+.nav_links {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  top: 100%;
+  list-style: none;
+  gap: 6px;
+  margin-top: 6px;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+
+  &.expanded {
+    height: calc(200% + 12px);
   }
 }
 
@@ -57,16 +94,11 @@ $menu-lines: rgba(190, 190, 190, 1);
   padding-bottom: 6px;
 }
 
-.hamburger_menu {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.link {
   width: 100%;
-  max-width: 25px;
-}
+  text-align: center;
 
-.hamburger_menu_line {
-  width: 100%;
-  height: 3px;
-  background-color: $menu-lines;
+  &:hover {
+    color: $holo-color;
+  }
 }
