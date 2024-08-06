@@ -352,6 +352,32 @@ $text-color: theme('textColor.default');
 
     .title_text {
       height: 100%;
+      width: 100%;
+    }
+
+    .title_1_animated {
+      border-right: 0;
+      opacity: 0;
+      animation: flicker-in 1.5s 3.75s forwards;
+    }
+  
+    .title_2_animated {
+      border-right: 0;
+      opacity: 0;
+      animation: flicker-in 1.5s 4.5s forwards;
+    }
+  
+    .title_3_animated {
+      border-right: 0;
+      opacity: 0;
+      animation:
+        flicker-in 1.5s 5.25s forwards;
+    }
+    .subtitle_animated {
+      border-right: 0;
+      opacity: 0;
+      animation:
+        flicker-in 1.5s 7.75s forwards;
     }
   }
 
