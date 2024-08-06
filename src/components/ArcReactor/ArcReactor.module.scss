@@ -32,6 +32,16 @@ $semi-arc-radius: calc($reactor-size * 0.8 * 0.415);
 $core-arc-radius: calc($semi-arc-radius * 0.625);
 $tickmark-height: 25px;
 
+$large-border-mobile: 25px;
+$medium-border-mobile: 9px;
+$small-border-mobile: 4px;
+
+$reactor-size-mobile: 325px;
+$arc-radius-mobile: calc($reactor-size-mobile * 0.42);
+$semi-arc-radius-mobile: calc($reactor-size-mobile * 0.8 * 0.405);
+$core-arc-radius-mobile: calc($semi-arc-radius-mobile * 0.625);
+$tickmark-height-mobile: 20px;
+
 .arc_reactor {
   position: relative;
   display: flex;
@@ -46,13 +56,6 @@ $tickmark-height: 25px;
     inset 0px 0px 50px 15px $primary-solid;
   transition: transform 0.25s ease-in-out;
 }
-
-// .arc_reactor:hover {
-//   transform: scale(1.25) rotateZ(180deg);
-//   box-shadow:
-//     0px 0px 50px 15px $secondary-shadow,
-//     inset 0px 0px 50px 15px $secondary-shadow;
-// }
 
 .semi_arc {
   width: 75%;
@@ -154,7 +157,7 @@ $tickmark-height: 25px;
   border: $medium-border solid $secondary-shadow;
   border-top: $medium-border solid transparent;
   border-bottom: $medium-border solid transparent;
-  animation: counter-rotate 5s linear infinite; 
+  animation: counter-rotate 5s linear infinite;
 }
 
 .core {
@@ -167,7 +170,11 @@ $tickmark-height: 25px;
   border-radius: 50%;
   border: $medium-border solid $secondary-light;
   animation: rotate 2s linear infinite;
-  background: radial-gradient(circle, $primary-solid, theme('colors.siteColor'));;
+  background: radial-gradient(
+    circle,
+    $primary-solid,
+    theme('colors.siteColor')
+  );
 
   .core_ball {
     width: 14px;
@@ -193,7 +200,7 @@ $tickmark-height: 25px;
     li {
       width: 1px;
       height: $tickmark-height;
-      background: theme("colors.secondary");
+      background: theme('colors.secondary');
       position: absolute;
       animation: color_ease 3s infinite ease-in-out;
     }
@@ -320,6 +327,240 @@ $tickmark-height: 25px;
   }
 }
 
+@media (max-width: 640px) {
+  .arc_reactor {
+    height: $reactor-size-mobile;
+    width: $reactor-size-mobile;
+    border-radius: 50%;
+    border: $size4 solid $secondary-medium;
+    box-shadow:
+      0px 0px 50px 15px $primary-solid,
+      inset 0px 0px 50px 15px $primary-solid;
+    transition: transform 0.25s ease-in-out;
+  }
+
+  .semi_arc {
+    border: $large-border-mobile solid $tertiary-light;
+    border-left: $large-border-mobile solid transparent;
+  }
+
+  .semi_arc_tickmark_arc {
+    padding-bottom: $large-border-mobile;
+    .semi_arc_tickmarks {
+      li {
+        height: $large-border-mobile;
+      }
+      li:first-child {
+        transform: rotate(153deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(2) {
+        transform: rotate(171deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(3) {
+        transform: rotate(189deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(4) {
+        transform: rotate(207deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(5) {
+        transform: rotate(225deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(6) {
+        transform: rotate(243deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(7) {
+        transform: rotate(261deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(8) {
+        transform: rotate(279deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(9) {
+        transform: rotate(297deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(10) {
+        transform: rotate(315deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(11) {
+        transform: rotate(333deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(12) {
+        transform: rotate(351deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(13) {
+        transform: rotate(9deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(14) {
+        transform: rotate(27deg) translateY($semi-arc-radius-mobile);
+      }
+      li:nth-child(15) {
+        transform: rotate(45deg) translateY($semi-arc-radius-mobile);
+      }
+    }
+  }
+
+  .semi_arc_2 {
+    width: 88%;
+    height: 88%;
+    position: absolute;
+    border-radius: 50%;
+    border: $medium-border-mobile solid $secondary-shadow;
+    border-top: $medium-border-mobile solid transparent;
+    border-bottom: $medium-border-mobile solid transparent;
+    animation: counter-rotate 5s linear infinite;
+  }
+
+  .core {
+    border: $medium-border-mobile solid $secondary-light;
+    
+    .core_ball {
+      width: 10px;
+      height: 10px;
+      transform: translateY($core-arc-radius-mobile);
+    }
+  }
+
+  .tickmarks_arc {
+    height: $reactor-size-mobile;
+    width: $reactor-size-mobile;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: $tickmark-height-mobile;
+    padding-right: 1px;
+
+    .tickmarks {
+      li {
+        width: 1px;
+        height: $tickmark-height-mobile;
+        background: theme('colors.secondary');
+        position: absolute;
+        animation: color_ease 3s infinite ease-in-out;
+      }
+      li:first-child {
+        transform: rotate(9deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(2) {
+        transform: rotate(18deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(3) {
+        transform: rotate(27deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(4) {
+        transform: rotate(36deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(5) {
+        transform: rotate(45deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(6) {
+        transform: rotate(54deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(7) {
+        transform: rotate(63deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(8) {
+        transform: rotate(72deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(9) {
+        transform: rotate(81deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(10) {
+        transform: rotate(90deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(11) {
+        transform: rotate(99deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(12) {
+        transform: rotate(108deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(13) {
+        transform: rotate(117deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(14) {
+        transform: rotate(126deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(15) {
+        transform: rotate(135deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(16) {
+        transform: rotate(144deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(17) {
+        transform: rotate(153deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(18) {
+        transform: rotate(162deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(19) {
+        transform: rotate(171deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(20) {
+        transform: rotate(180deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(21) {
+        transform: rotate(189deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(22) {
+        transform: rotate(198deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(23) {
+        transform: rotate(207deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(24) {
+        transform: rotate(216deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(25) {
+        transform: rotate(225deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(26) {
+        transform: rotate(234deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(27) {
+        transform: rotate(243deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(28) {
+        transform: rotate(252deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(29) {
+        transform: rotate(261deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(30) {
+        transform: rotate(270deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(31) {
+        transform: rotate(279deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(32) {
+        transform: rotate(288deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(33) {
+        transform: rotate(297deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(34) {
+        transform: rotate(306deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(35) {
+        transform: rotate(315deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(36) {
+        transform: rotate(324deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(37) {
+        transform: rotate(333deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(38) {
+        transform: rotate(342deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(39) {
+        transform: rotate(351deg) translateY($arc-radius-mobile);
+      }
+      li:nth-child(40) {
+        transform: rotate(360deg) translateY($arc-radius-mobile);
+      }
+    }
+  }
+}
+
 @keyframes color_ease {
   0% {
     background: $secondary-solid;
@@ -342,7 +583,6 @@ $tickmark-height: 25px;
   100% {
     border-color: $tertiary-light;
   }
-  
 }
 
 @keyframes rotate {
