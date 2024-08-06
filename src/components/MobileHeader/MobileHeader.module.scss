@@ -83,7 +83,7 @@ $holo-color: rgba(2, 254, 255, 0.5);
   transition: height 0.3s ease-in-out;
 
   &.expanded {
-    height: calc(200% + 12px);
+    height: calc(200% + 6px);
   }
 }
 

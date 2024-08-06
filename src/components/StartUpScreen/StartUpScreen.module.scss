@@ -1,4 +1,4 @@
-$progress-bar: rgba(2,254,255, 0.5);
+$progress-bar: rgba(2, 254, 255, 0.5);
 $site-color: rgba(11, 34, 41, 1);
 
 .screen {
@@ -41,7 +41,8 @@ $site-color: rgba(11, 34, 41, 1);
     align-items: center;
     justify-content: center;
 
-    h4, div {
+    h4,
+    div {
       color: $progress-bar;
     }
   }
@@ -49,4 +50,18 @@ $site-color: rgba(11, 34, 41, 1);
 
 .hide {
   display: none;
+}
+
+@media (max-width: 640px) {
+  .screen {
+    .progress_bar_container {
+      height: 8%;
+      width: 45%;
+    }
+
+    .powering_up_container {
+      height: 15%;
+      width: 60%;
+    }
+  }
 }

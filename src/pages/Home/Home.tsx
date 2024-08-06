@@ -10,6 +10,7 @@ import { ReactComponent as ComputerIcon } from '../../assets/icons/computer.svg'
 import { ReactComponent as ReactIcon } from '../../assets/icons/react.svg';
 import { ReactComponent as MailIcon } from '../../assets/icons/mail.svg';
 import { useNavigation } from '../../context/NavigationContext';
+import { useMediaQuery } from '../../utils/useMediaQuery';
 
 
 const Home = (): ReactElement => {
@@ -19,6 +20,7 @@ const Home = (): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
   const targetRefsBorderFade = useIntersectionObserver(styles.fade_in, 0.1);
   const { navigateWithTransition } = useNavigation();
+  const isMobile = useMediaQuery({ 'max-width': 640 });
   
 
   useEffect(() => {
@@ -37,9 +39,9 @@ const Home = (): ReactElement => {
 
   return (
     <>
-      <Background shouldRunAnimation={shouldRunAnimation} />
+       { !isMobile && <Background shouldRunAnimation={shouldRunAnimation} /> }
       <div className={styles.home_page}>
-        <div className={styles.first_section}>
+        <div className={styles.landing_section}>
           {shouldRunAnimation && <StartUpScreen />}
           <div className={styles.flex_container_row}>
             <div
@@ -140,11 +142,7 @@ const Home = (): ReactElement => {
                     className={`${styles.icon_border} ${styles.user_icon}`}
                   />
                   <UserIcon
-                    style={{
-                      stroke: 'rgba(2, 254, 255, 0.5)',
-                      height: '65%',
-                      width: '65%'
-                    }}
+                    className={styles.user_icon_image}
                   />
                 </div>
               </a>
@@ -178,12 +176,7 @@ const Home = (): ReactElement => {
                     className={`${styles.icon_border} ${styles.computer_icon}`}
                   />
                   <ComputerIcon
-                    style={{
-                      fill: 'rgba(2, 254, 255, 0.5)',
-                      strokeWidth: '0px',
-                      height: '53%',
-                      width: '53%',
-                    }}
+                    className={styles.computer_icon_image}
                   />
                 </div>
               </a>
@@ -220,11 +213,7 @@ const Home = (): ReactElement => {
                     className={`${styles.icon_border} ${styles.react_icon}`}
                   />
                   <ReactIcon
-                    style={{
-                      fill: 'rgba(2, 254, 255, 0.5)',
-                      height: '65%',
-                      width: '65%',
-                    }}
+                    className={styles.react_icon_image}
                   />
                 </div>
               </a>
@@ -261,11 +250,7 @@ const Home = (): ReactElement => {
                     className={`${styles.icon_border} ${styles.mail_icon}`}
                   />
                   <MailIcon
-                    style={{
-                      fill: 'rgba(2, 254, 255, 0.5)',
-                      height: '57%',
-                      width: '57%',
-                    }}
+                    className={styles.mail_icon_image}
                   />
                 </div>
               </a>

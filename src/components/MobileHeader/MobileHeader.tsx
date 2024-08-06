@@ -32,7 +32,10 @@ export const MobileHeader = (): ReactElement => {
           >
             <img src={avatar} alt="Logo" className={styles.logo_img} />
           </Link>
-          <div className={`${styles.hamburger_menu} ${isMenuOpen && styles.expanded}`} onClick={toggleMenuOpen}>
+          <div
+            className={`${styles.hamburger_menu} ${isMenuOpen && styles.expanded}`}
+            onClick={toggleMenuOpen}
+          >
             <div className={styles.hamburger_menu_line} />
             <div className={styles.hamburger_menu_line} />
             <div className={styles.hamburger_menu_line} />
