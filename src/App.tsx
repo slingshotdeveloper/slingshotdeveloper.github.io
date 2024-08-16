@@ -9,9 +9,15 @@ import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { NavigationProvider } from './context/NavigationContext';
+import { ContactModal } from './components/ContactModal/ContactModal';
 
 const App: React.FC = () => {
   const [initialLoad, setInitialLoad] = useState(true);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const toggleContactModal = () => {
+    setIsContactModalOpen(!isContactModalOpen);
+  };
 
   useEffect(() => {
     if (initialLoad) {
@@ -24,13 +30,13 @@ const App: React.FC = () => {
     <NavigationProvider>
     <div className={styles.main}>
       <div className={styles.site_background} />
-      <Header />
+      <Header toggleContactModal={toggleContactModal}/>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home toggleContactModal={toggleContactModal}/>} />
         <Route path="/about" element={<div />} />
         <Route path="/work" element={<div />} />
-        <Route path="/contact" element={<div />} />
       </Routes>
+      <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
       <Footer />
     </div>
     </NavigationProvider>

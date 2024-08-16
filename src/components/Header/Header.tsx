@@ -6,14 +6,18 @@ import { useNavigation } from '../../context/NavigationContext';
 import { useMediaQuery } from '../../utils/useMediaQuery';
 import { MobileHeader } from '../MobileHeader/MobileHeader';
 
-const Header = (): ReactElement => {
+interface HeaderProps {
+  toggleContactModal: () => void;
+}
+
+const Header = ({ toggleContactModal }: HeaderProps): ReactElement => {
   const { navigateWithTransition } = useNavigation();
   const isMobile = useMediaQuery({ 'max-width': 640 });
 
   return (
     <header>
       {isMobile ? (
-        <MobileHeader />
+        <MobileHeader toggleContactModal={toggleContactModal}/>
       ) : (
         <nav className={styles.navbar}>
           <div className={styles.navbar_container}>
@@ -64,17 +68,13 @@ const Header = (): ReactElement => {
                   Work
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/contact"
+              <li
                   className={styles.nav_link}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateWithTransition('/');
+                  onClick={() => {
+                    toggleContactModal();
                   }}
                 >
                   Contact
-                </Link>
               </li>
             </ul>
           </div>

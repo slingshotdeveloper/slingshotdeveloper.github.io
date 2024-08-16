@@ -1,0 +1,227 @@
+$border-color: rgba(2, 254, 255, 0.2);
+$content-fill: rgba(2, 254, 255, 0.05);
+$site-color: rgba(11, 34, 41, 0.8);
+$text-color: rgba(190, 190, 190, 1);
+$error-border-color: rgba(255, 0, 0, 0.5); // Red color for errors
+$error-bg-color: rgba(255, 0, 0, 0.1); // Light red background for errors
+$error-text-color: rgba(255, 0, 0, 0.7); // Red text color for errors
+
+.contact_container {
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  position: fixed;
+  background-color: $site-color;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-wrap: nowrap;
+  border: 0px solid $border-color;
+  top: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 10%;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.contact_container_open {
+  visibility: visible;
+  z-index: 999999;
+  text-wrap: wrap;
+  display: flex;
+  height: 80vh;
+  width: 70vw;
+  padding: 3% 5%;
+  border: 10px solid $border-color;
+  border-radius: 15px;
+  box-shadow: 0px 0px 35px $border-color;
+  backdrop-filter: blur(20px);
+  overflow: auto;
+  transition:
+    height 0.5s ease-in-out,
+    width 0.5s ease-in-out,
+    border 0.5s ease-in-out,
+    padding 0.5s ease-in-out;
+}
+
+.close_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 35px;
+  margin-right: 25px;
+  height: 40px;
+  width: 50px;
+  padding: 10px;
+  cursor: pointer;
+
+  .close_button_line1,
+  .close_button_line2 {
+    width: 100%;
+    height: 3px;
+    background-color: $text-color;
+  }
+
+  .close_button_line1 {
+    transform: translateY(1.5px) rotate(45deg);
+  }
+
+  .close_button_line2 {
+    transform: translateY(-1.5px) rotate(-45deg);
+  }
+}
+
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+
+  .name_fields {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+
+    label {
+      flex: 1;
+    }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-size: 20px;
+
+    input,
+    textarea {
+      margin-top: 10px;
+      background-color: $content-fill;
+      padding: 8px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      font-size: 20px;
+      color: $text-color;
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:focus,
+      &:hover,
+      &:active {
+        box-shadow: 0px 0px 10px $border-color;
+        outline: none;
+      }
+
+      &:invalid {
+        border-color: $error-border-color;
+        background-color: $error-bg-color;
+        box-shadow: 0px 0px 10px $error-border-color;
+      }
+
+      &:invalid:focus {
+        outline: none;
+        box-shadow: 0px 0px 15px $error-border-color;
+      }
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-text-fill-color: $text-color;
+    }
+  }
+
+  .message_field {
+    flex-grow: 1;
+    display: flex;
+
+    label {
+      width: 100%;
+    }
+
+    textarea {
+      height: 100%;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .error {
+    input,
+    textarea {
+      border-color: $error-border-color;
+      background-color: $error-bg-color;
+    }
+  }
+
+  .error_message {
+    color: $error-text-color;
+    font-size: 18px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 950px) {
+
+  .contact_container {
+    gap: 20px;
+    top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+
+    h2 {
+      font-size: 40px;
+    }
+  }
+
+  .contact_container_open {
+    height: 90vh;
+    width: 90vw;
+    padding: 3% 3%;
+  }
+
+  .close_button {
+    margin-top: 25px;
+    margin-right: 5px;
+    height: 35px;
+    width: 45px;
+  }
+
+  .contact_form {
+    gap: 0;
+  
+    .name_fields {
+      flex-direction: column;
+      gap: 0;
+    }
+    
+    label {
+      font-size: 16px;
+      margin-bottom: 10px;
+
+      input, textarea {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+    }
+    .error_message {
+      font-size: 12px;
+      margin-top: 0;
+    }
+  }
+  
+}
