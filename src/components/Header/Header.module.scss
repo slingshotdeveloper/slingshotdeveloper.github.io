@@ -45,6 +45,7 @@ $holo-color: rgba(2, 254, 255, 0.5);
       display: flex;
       align-items: center;
       height: 100%;
+      cursor: pointer;
 
       &:hover {
         color: $holo-color;

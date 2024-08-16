@@ -5,6 +5,7 @@
 @layer base {  
   $button-border: rgba(2, 254, 255, 0.3);
   $button-text: rgba(2, 254, 255, 0.6);
+  $button-text-disabled: rgba(190, 190, 190, 0.4);
   $button-fill: rgba(2, 254, 255, 0.08);
   $button-fill-active: rgba(50, 230, 230, 0.8);
   $button-text-active: rgba(11, 34, 41, 1);
@@ -73,7 +74,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
-  button:hover, button:active, button:focus {
+  button:hover, button:focus {
     background-color: $button-fill-active;
     color: $button-text-active;
     box-shadow: 0 0 10px 10px $button-border;
@@ -86,6 +87,15 @@
 
   button:active {
     transform: scale(0.95);
+  }
+
+  button:disabled {
+    border: 2px solid $button-border;
+    box-shadow: none;
+    background-color: $button-fill;
+    color: $button-text-disabled;
+    cursor: not-allowed;
+    transform: none;
   }
 
   a:hover {

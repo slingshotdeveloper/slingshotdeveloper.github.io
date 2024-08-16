@@ -12,8 +12,11 @@ import { ReactComponent as MailIcon } from '../../assets/icons/mail.svg';
 import { useNavigation } from '../../context/NavigationContext';
 import { useMediaQuery } from '../../utils/useMediaQuery';
 
+interface HomeProps {
+  toggleContactModal: () => void;
+}
 
-const Home = (): ReactElement => {
+const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
   const [shouldRunAnimation, setShouldRunAnimation] = useState(() => {
     return sessionStorage.getItem('hasRunAnimation') === null;
   });
@@ -243,8 +246,7 @@ const Home = (): ReactElement => {
               }
             }}
           >
-            <div className={styles.icon_container}>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/')}}>
+            <div className={styles.icon_container} onClick={() => {toggleContactModal()}}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.mail_icon}`}
@@ -253,7 +255,6 @@ const Home = (): ReactElement => {
                     className={styles.mail_icon_image}
                   />
                 </div>
-              </a>
             </div>
             <div className={styles.info_section_text_container}>
               <h3 className={styles.info_section_text_title}>
@@ -264,9 +265,7 @@ const Home = (): ReactElement => {
                 For inquiries about hiring me for your business needs, click the button below and send me a message. I look forward to discussing how we can collaborate to achieve your vision! 
                 </p>
               </div>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/')}}>
-                <button>Contact Me</button>
-              </a>
+                <button onClick={() => {toggleContactModal()}}>Contact Me</button>
             </div>
           </div>
         </div>

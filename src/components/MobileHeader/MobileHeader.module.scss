@@ -97,6 +97,7 @@ $holo-color: rgba(2, 254, 255, 0.5);
 .link {
   width: 100%;
   text-align: center;
+  cursor: pointer;
 
   &:hover {
     color: $holo-color;

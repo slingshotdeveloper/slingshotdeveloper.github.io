@@ -4,7 +4,11 @@ import avatar from '../../assets/images/avatar.png';
 import { useNavigation } from '../../context/NavigationContext';
 import { Link } from 'react-router-dom';
 
-export const MobileHeader = (): ReactElement => {
+interface MobileHeaderProps {
+  toggleContactModal: () => void;
+}
+
+export const MobileHeader = ({ toggleContactModal }: MobileHeaderProps): ReactElement => {
   const { navigateWithTransition } = useNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,6 +24,11 @@ export const MobileHeader = (): ReactElement => {
     setIsMenuOpen(false);
     navigateWithTransition(path);
   };
+
+  const handleContactClose = () => {
+    toggleContactModal();
+    toggleMenuOpen();
+  }
 
   return (
     <nav className={styles.navbar}>
@@ -76,15 +85,12 @@ export const MobileHeader = (): ReactElement => {
             </Link>
           </div>
           <div className={styles.nav_link}>
-            <Link
+            <li
               className={styles.link}
-              to="/contact"
-              onClick={(e) => {
-                handleNavigation(e, '/contact');
-              }}
+              onClick={handleContactClose}
             >
               Contact
-            </Link>
+            </li>
           </div>
         </div>
       </div>
