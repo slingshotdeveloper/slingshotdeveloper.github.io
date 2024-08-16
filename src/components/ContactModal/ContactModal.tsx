@@ -104,7 +104,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       } catch (error) {
         console.error('Error sending email:', error);
         setLoading(false);
-        alert('Failed to send email. Please try again later.');
+        alert('Failed to send email. Please try again later. ');
       }
     }
   };
