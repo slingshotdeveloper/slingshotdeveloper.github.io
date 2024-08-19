@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import axiosInstance from '../../utils/axiosInstance';
 import styles from './ContactModal.module.scss';
+import { ResponseModal } from './components/ResponseModal/ResponseModal';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -17,7 +18,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [sentMessage, setSentMessage] = useState(false);
+  const [responseMessage, setResponseMessage] = useState<'error' | 'success' | ''>('');
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
@@ -93,18 +94,18 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         });
     
         if (response.status === 200) {
-          setSentMessage(true);
+          setResponseMessage('success');
           setLoading(false);
           setTimeout(() => {
             clearValues();
             toggleContactModal();
-            setSentMessage(false);
-          }, 1500);
+            setResponseMessage('');
+          }, 3500);
         }
       } catch (error) {
         console.error('Error sending email:', error);
         setLoading(false);
-        alert('Failed to send email. Please try again later.');
+        setResponseMessage('error');
       }
     }
   };
@@ -131,6 +132,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       subject: '',
       message: '',
     });
+  };
+
+  const handleCloseResponseModal = () => {
+    setResponseMessage('');
   };
 
   return (
@@ -204,8 +209,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             )}
           </label>
         </div>
-        <button disabled={loading || sentMessage}>{loading ? 'Sending...' : sentMessage ? 'Sent ✔' : 'Submit'}</button>
+        <button disabled={loading || (responseMessage === 'success')}>{loading ? 'Sending...' : (responseMessage === 'success') ? 'Sent ✔' : 'Submit'}</button>
       </form>
+      <ResponseModal isOpen={responseMessage !== ''} type={responseMessage} onClose={handleCloseResponseModal} />
     </div>
   );
 };

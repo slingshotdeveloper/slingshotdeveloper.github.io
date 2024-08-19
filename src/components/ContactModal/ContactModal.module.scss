@@ -2,9 +2,9 @@ $border-color: rgba(2, 254, 255, 0.2);
 $content-fill: rgba(2, 254, 255, 0.05);
 $site-color: rgba(11, 34, 41, 0.8);
 $text-color: rgba(190, 190, 190, 1);
-$error-border-color: rgba(255, 0, 0, 0.5); // Red color for errors
-$error-bg-color: rgba(255, 0, 0, 0.1); // Light red background for errors
-$error-text-color: rgba(255, 0, 0, 0.7); // Red text color for errors
+$error-border-color: rgba(255, 0, 0, 0.5);
+$error-bg-color: rgba(255, 0, 0, 0.1);
+$error-text-color: rgba(255, 0, 0, 0.7);
 
 .contact_container {
   display: flex;
@@ -163,7 +163,6 @@ $error-text-color: rgba(255, 0, 0, 0.7); // Red text color for errors
     input,
     textarea {
       border-color: $error-border-color;
-      background-color: $error-bg-color;
     }
   }
 
@@ -221,6 +220,10 @@ $error-text-color: rgba(255, 0, 0, 0.7); // Red text color for errors
     .error_message {
       font-size: 12px;
       margin-top: 0;
+    }
+    
+    button {
+      align-self: center;
     }
   }
   
