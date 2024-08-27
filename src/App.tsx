@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { NavigationProvider } from './context/NavigationContext';
 import { ContactModal } from './components/ContactModal/ContactModal';
+import About from './pages/About/About';
 
 const App: React.FC = () => {
   const [initialLoad, setInitialLoad] = useState(true);
@@ -33,7 +34,7 @@ const App: React.FC = () => {
       <Header toggleContactModal={toggleContactModal}/>
       <Routes>
         <Route path="/" element={<Home toggleContactModal={toggleContactModal}/>} />
-        <Route path="/about" element={<div />} />
+        <Route path="/about" element={<About />} />
         <Route path="/work" element={<div />} />
       </Routes>
       <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
