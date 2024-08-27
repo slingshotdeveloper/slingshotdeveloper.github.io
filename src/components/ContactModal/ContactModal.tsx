@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import axiosInstance from '../../utils/axiosInstance';
 import styles from './ContactModal.module.scss';
 import { ResponseModal } from './components/ResponseModal/ResponseModal';
@@ -26,6 +26,25 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     subject: '',
     message: '',
   });
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      toggleContactModal();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -140,6 +159,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
   return (
     <div
+      ref={modalRef}
       className={`${styles.contact_container} ${isOpen && styles.contact_container_open}`}
     >
       <div className={styles.close_button} onClick={handleClose}>
