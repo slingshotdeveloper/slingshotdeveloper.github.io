@@ -286,6 +286,7 @@ $text-color: theme('textColor.default');
   gap: 25px;
   justify-content: space-between;
   align-items: flex-start;
+  line-height: 1.7em;
 }
 
 .info_section_text_title {
@@ -419,7 +420,7 @@ $text-color: theme('textColor.default');
     }
 
     .info_section_text_content {
-      text-align: justify;
+      text-align: center;
     }
 
     .icon_wrapper {
