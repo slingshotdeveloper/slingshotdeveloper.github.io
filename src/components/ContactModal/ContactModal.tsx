@@ -26,25 +26,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     subject: '',
     message: '',
   });
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      toggleContactModal();
-    }
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -159,7 +140,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
   return (
     <div
-      ref={modalRef}
       className={`${styles.contact_container} ${isOpen && styles.contact_container_open}`}
     >
       <div className={styles.close_button} onClick={handleClose}>
@@ -175,6 +155,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               type="text"
               name="firstName"
               value={firstName}
+              maxLength={40}
               onChange={handleChange}
             />
             {errors.firstName && (
@@ -187,6 +168,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               type="text"
               name="lastName"
               value={lastName}
+              maxLength={40}
               onChange={handleChange}
             />
             {errors.lastName && (
@@ -201,6 +183,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               type="text"
               name="email"
               value={email}
+              maxLength={254}
               onChange={handleChange}
             />
             {errors.email && (
@@ -213,6 +196,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               type="text"
               name="subject"
               value={subject}
+              maxLength={78}
               onChange={handleChange}
             />
             {errors.subject && (
@@ -223,7 +207,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         <div className={styles.message_field}>
           <label className={errors.message && styles.error}>
             Message:
-            <textarea name="message" value={message} onChange={handleChange} />
+            <textarea name="message" value={message} maxLength={750} onChange={handleChange} />
             {errors.message && (
               <span className={styles.error_message}>{errors.message}</span>
             )}

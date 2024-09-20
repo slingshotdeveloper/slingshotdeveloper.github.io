@@ -5,7 +5,11 @@ import { ReactComponent as BearIcon } from '../../assets/icons/sailorBear.svg';
 import { ReactComponent as CrossIcon } from '../../assets/icons/crossIcon.svg';
 import { ReactComponent as BarbellIcon } from '../../assets/icons/barbellIcon.svg';
 
-const About = (): ReactElement => {
+interface AboutProps {
+  toggleContactModal: () => void;
+}
+
+const About = ({ toggleContactModal }: AboutProps): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
 
   return (
@@ -25,14 +29,14 @@ const About = (): ReactElement => {
             versatility and a well-rounded approach to building efficient and
             scalable applications.
           </p>
-          <h3
+          <h2
             className={styles.background_title}
             ref={(el) => {
               if (el) targetRefsFade.current[1] = el;
             }}
           >
-            Background:
-          </h3>
+            Background
+          </h2>
           <div
             className={styles.content_section_container}
             ref={(el) => {
@@ -92,14 +96,14 @@ const About = (): ReactElement => {
             <BarbellIcon className={styles.icon} />
           </div>
           <div>
-            <h3
+            <h2
               className={styles.section_title}
               ref={(el) => {
                 if (el) targetRefsFade.current[5] = el;
               }}
             >
-              Some quick facts about me:
-            </h3>
+              Some quick facts about me
+            </h2>
           </div>
           <div className={styles.quick_facts_grid}>
             <div
@@ -109,7 +113,9 @@ const About = (): ReactElement => {
               }}
             >
               <h4>Favorite Food...</h4>
-              <p>Mexican. You can't beat fajitas.</p>
+              <p className={styles.quick_fact_answer}>
+                Mexican. You can't beat fajitas.
+              </p>
             </div>
             <div
               className={styles.quick_facts_text_container}
@@ -117,8 +123,8 @@ const About = (): ReactElement => {
                 if (el) targetRefsFade.current[7] = el;
               }}
             >
-              <h4>Favorite Show...</h4>
-              <p>The Office</p>
+              <h4>Favorite TV Show...</h4>
+              <p className={styles.quick_fact_answer}>The Office</p>
             </div>
             <div
               className={styles.quick_facts_text_container}
@@ -127,7 +133,7 @@ const About = (): ReactElement => {
               }}
             >
               <h4>Favorite Movie...</h4>
-              <p>The Lord of the Rings</p>
+              <p className={styles.quick_fact_answer}>The Lord of the Rings</p>
             </div>
             <div
               className={styles.quick_facts_text_container}
@@ -135,9 +141,109 @@ const About = (): ReactElement => {
                 if (el) targetRefsFade.current[9] = el;
               }}
             >
-              <h4>Favorite Sport...</h4>
-              <p>Pickleball</p>
+              <h4>Favorite Sport (currently)...</h4>
+              <p className={styles.quick_fact_answer}>Golf</p>
             </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[10] = el;
+              }}
+            >
+              <h4>Favorite Book...</h4>
+              <p className={styles.quick_fact_answer}>
+                Wild at Heart by John Eldredge
+              </p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[11] = el;
+              }}
+            >
+              <h4>Favorite Season...</h4>
+              <p className={styles.quick_fact_answer}>Fall</p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[12] = el;
+              }}
+            >
+              <h4>Favorite Holiday...</h4>
+              <p className={styles.quick_fact_answer}>Christmas</p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[13] = el;
+              }}
+            >
+              <h4>Favorite Song...</h4>
+              <p className={styles.quick_fact_answer}>
+                Stop This Train by John Mayer
+              </p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[14] = el;
+              }}
+            >
+              <h4>Mountains or Beaches...</h4>
+              <p className={styles.quick_fact_answer}>Mountains</p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[15] = el;
+              }}
+            >
+              <h4>Favorite Place I've Been...</h4>
+              <p className={styles.quick_fact_answer}>
+                Lauterbrunnen, Switzerland
+              </p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[16] = el;
+              }}
+            >
+              <h4>Favorite Scripture...</h4>
+              <p className={styles.quick_fact_answer}>
+                "Give all your cares and worries to God, for He cares about
+                you." - 1 Peter 5:7
+              </p>
+            </div>
+            <div
+              className={styles.quick_facts_text_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[17] = el;
+              }}
+            >
+              <h4>Favorite Quote...</h4>
+              <p className={styles.quick_fact_answer}>
+                "If I find in myself a desire which no experience in this world
+                can satisfy, the most probable explanation is that I was made
+                for another world." - C.S. Lewis{' '}
+              </p>
+            </div>
+          </div>
+          <div
+            className={styles.question_container}
+            ref={(el) => {
+              if (el) targetRefsFade.current[18] = el;
+            }}
+          >
+            <h2>Have A Question For Me?</h2>
+            <button
+              onClick={() => {
+                toggleContactModal();
+              }}
+            >
+              Let Me Know
+            </button>
           </div>
         </div>
       </div>

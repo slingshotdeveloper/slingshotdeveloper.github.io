@@ -48,6 +48,7 @@
 
   h2 {
     font-size: 48px;
+    line-height: 1em;
   }
 
   h3 {
@@ -100,5 +101,32 @@
 
   a:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 840px) {
+    body {
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+  
+    h1 {
+      font-size: 54px;
+    }
+  
+    h2 {
+      font-size: 36px;
+    }
+  
+    h3 {
+      font-size: 24px;
+    }
+  
+    h4 {
+      font-size: 20px;
+    }
+  
+    h5 {
+      font-size: 16px;
+    }
   }
 }
