@@ -34,7 +34,7 @@ const App: React.FC = () => {
       <Header toggleContactModal={toggleContactModal}/>
       <Routes>
         <Route path="/" element={<Home toggleContactModal={toggleContactModal}/>} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About toggleContactModal={toggleContactModal}/>} />
         <Route path="/work" element={<div />} />
       </Routes>
       <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
