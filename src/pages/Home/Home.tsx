@@ -23,7 +23,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
   const targetRefsBorderFade = useIntersectionObserver(styles.fade_in, 0.1);
   const { navigateWithTransition } = useNavigation();
-  const isMobile = useMediaQuery({ 'max-width': 640 });
+  const isMobile = useMediaQuery({ 'max-width': 840 });
   
 
   useEffect(() => {
