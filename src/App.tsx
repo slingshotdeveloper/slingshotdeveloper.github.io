@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import { NavigationProvider } from './context/NavigationContext';
 import { ContactModal } from './components/ContactModal/ContactModal';
 import About from './pages/About/About';
+import Work from './pages/Work/Work';
 
 const App: React.FC = () => {
   const [initialLoad, setInitialLoad] = useState(true);
@@ -35,7 +36,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home toggleContactModal={toggleContactModal}/>} />
         <Route path="/about" element={<About toggleContactModal={toggleContactModal}/>} />
-        <Route path="/work" element={<div />} />
+        <Route path="/work" element={<Work toggleContactModal={toggleContactModal}/>} />
       </Routes>
       <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
       <Footer />

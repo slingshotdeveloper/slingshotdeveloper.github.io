@@ -1,10 +1,12 @@
-import React, { createContext, ReactNode, useContext, useState, useCallback } from 'react';
+import React, { createContext, ReactNode, useContext, useState, useCallback, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from '../App.module.scss';
+import { split } from 'postcss/lib/list';
 
 interface NavigationContextProps {
   navigateWithTransition: (path: string) => void;
   showTransition: boolean;
+  hash: string | null;
 }
 
 interface NavigationProviderProps {
@@ -17,12 +19,16 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
   const navigate = useNavigate();
   const [showTransition, setShowTransition] = useState(false);
   const location = useLocation();
+  const [hash, setHash] = useState<string | null>(null);
 
   const navigateWithTransition = useCallback((path: string) => {
-    if (location.pathname !== path) {
+    const [basePath, hashValue] = path.split('#');
+    setHash(hashValue || null);
+
+    if (location.pathname !== basePath) {
       setShowTransition(true);
       setTimeout(() => {
-        navigate(path);
+        navigate(basePath);
       }, 500);
       setTimeout(() => {
         setShowTransition(false);
@@ -30,8 +36,12 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
     }
   }, [location.pathname, navigate]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
-    <NavigationContext.Provider value={{ navigateWithTransition, showTransition }}>
+    <NavigationContext.Provider value={{ navigateWithTransition, showTransition, hash }}>
       {children}
       <div className={`${styles.page_transition} ${showTransition && styles.active}`} />
     </NavigationContext.Provider>

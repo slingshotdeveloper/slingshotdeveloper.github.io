@@ -139,7 +139,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>
+              <a href='/about' onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.user_icon}`}
@@ -159,7 +159,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
                   and the things I love to do!
                 </p>
               </div>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>
+              <a href='/about' onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>
                 <button>About Me</button>
               </a>
             </div>
@@ -173,7 +173,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/work')}}>
+              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#freelance-section')}}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.computer_icon}`}
@@ -196,7 +196,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
                   and read testimonials from satisfied clients.
                 </p>
               </div>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/work')}}>
+              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#freelance-section')}}>
                 <button>Freelance Work</button>
               </a>
             </div>
@@ -210,7 +210,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/work')}}>
+              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#personal-section')}}>
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.react_icon}`}
@@ -233,7 +233,7 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
                   done!
                 </p>
               </div>
-              <a onClick={(e) => { e.preventDefault(); navigateWithTransition('/work')}}>
+              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#personal-section')}}>
                 <button>Personal Projects</button>
               </a>
             </div>
