@@ -1,0 +1,57 @@
+$text-color: theme('textColor.default');
+$content-border: rgba(2, 254, 255, 0.2);
+
+
+.card_container {
+  height: 100%;
+  width: 100%;
+  max-width: 325px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  text-align: start;
+  overflow: hidden;
+  transition: transform 0.25s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  background-color: $content-border;
+  padding: 5%;
+  transition: padding 0.25s ease-in-out;
+}
+
+.card_title {
+  margin-bottom: 1rem;
+}
+
+.card_description {
+  position: relative;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 1.6em;
+  max-height: 3.2em;
+  transition: all 0.25s ease-in-out;
+}
+
+.card_container:hover .card_description {
+  max-height: 8em;
+  white-space: normal;
+  height: auto;
+  opacity: 1; 
+}
+
+.card_footer {
+  text-align: right;
+  font-size: 16px;
+}
