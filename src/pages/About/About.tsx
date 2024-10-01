@@ -4,6 +4,8 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import { ReactComponent as BearIcon } from '../../assets/icons/sailorBear.svg';
 import { ReactComponent as CrossIcon } from '../../assets/icons/crossIcon.svg';
 import { ReactComponent as BarbellIcon } from '../../assets/icons/barbellIcon.svg';
+import ScrollDownIndicator from '../../components/ScrollDownIndicator/ScrollDownIndicator';
+import { useMediaQuery } from '../../utils/useMediaQuery';
 
 interface AboutProps {
   toggleContactModal: () => void;
@@ -11,24 +13,25 @@ interface AboutProps {
 
 const About = ({ toggleContactModal }: AboutProps): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
+  const isMobile = useMediaQuery({ 'max-width': 840 });
 
   return (
     <>
       <div className={styles.about_page}>
-        <h1 className={styles.page_title}>About Me</h1>
+        <div className={styles.intro_section}>
+          <div className={styles.intro_content}>
+            <h2 className={styles.intro_text}>A Little Bit About Me</h2>
+            <p>
+              Hi, my name is David Davis. I am a full-stack software engineer
+              with experience across professional, freelance, and personal
+              projects. I specialize in both frontend and backend development,
+              bringing versatility and a well-rounded approach to building
+              efficient and scalable applications.
+            </p>
+          </div>
+          <ScrollDownIndicator />
+        </div>
         <div className={styles.content_section}>
-          <p
-            className={styles.intro_text}
-            ref={(el) => {
-              if (el) targetRefsFade.current[0] = el;
-            }}
-          >
-            Hi, my name is David Davis. I am a full-stack software engineer with
-            experience across professional, freelance, and personal projects. I
-            specialize in both frontend and backend development, bringing
-            versatility and a well-rounded approach to building efficient and
-            scalable applications.
-          </p>
           <h2
             className={styles.background_title}
             ref={(el) => {
@@ -61,18 +64,37 @@ const About = ({ toggleContactModal }: AboutProps): ReactElement => {
               if (el) targetRefsFade.current[3] = el;
             }}
           >
-            <CrossIcon className={styles.icon} />
-            <div className={styles.text_container}>
-              <p>
-                As much as I love software development, my faith defines who I
-                am. Jesus Christ is my Lord and Savior, the source of my
-                abilities and desires. Without Him, my life has no meaning. My
-                goal is to honor Him in all that I do, including my career. If
-                you're reading this and don’t know Jesus, my prayer is that you
-                experience His unconditional love and be transformed. He loves
-                you more than you can imagine!
-              </p>
-            </div>
+            {isMobile ? (
+              <>
+                <div className={styles.text_container}>
+                  <p>
+                    As much as I love software development, my faith defines who
+                    I am. Jesus Christ is my Lord and Savior, the source of my
+                    abilities and desires. Without Him, my life has no meaning.
+                    My goal is to honor Him in all that I do, including my
+                    career. If you're reading this and don’t know Jesus, my
+                    prayer is that you experience His unconditional love and be
+                    transformed. He loves you more than you can imagine!
+                  </p>
+                </div>
+                <CrossIcon className={styles.icon} />
+              </>
+            ) : (
+              <>
+                <CrossIcon className={styles.icon} />
+                <div className={styles.text_container}>
+                  <p>
+                    As much as I love software development, my faith defines who
+                    I am. Jesus Christ is my Lord and Savior, the source of my
+                    abilities and desires. Without Him, my life has no meaning.
+                    My goal is to honor Him in all that I do, including my
+                    career. If you're reading this and don’t know Jesus, my
+                    prayer is that you experience His unconditional love and be
+                    transformed. He loves you more than you can imagine!
+                  </p>
+                </div>
+              </>
+            )}
           </div>
           <div
             className={styles.content_section_container}
