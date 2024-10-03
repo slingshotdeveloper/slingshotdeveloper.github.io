@@ -1,5 +1,6 @@
 $content-border: rgba(2, 254, 255, 0.5);
 $section-color: rgba(3, 25, 32, 1);
+$text-color: theme('textColor.default');
 
 .work_page {
   height: 100%;
@@ -53,7 +54,7 @@ $section-color: rgba(3, 25, 32, 1);
 .freelance_section {
   position: relative;
   background-color: $section-color;
-  padding: 5% 20%;
+  padding: 5% 10%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -61,8 +62,41 @@ $section-color: rgba(3, 25, 32, 1);
   text-align: center;
 }
 
-.freelance_cards {
+.project_title,
+.project_content {
+  padding: 0 20%;
+}
 
+.project_cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.project_title,
+.project_content,
+.project_cards {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.empty_message {
+  border: 1px solid $text-color;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}
+
+.personal_section {
+  position: relative;
+  padding: 5% 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  text-align: center;
 }
 
 .personal_section {
@@ -78,6 +112,10 @@ $section-color: rgba(3, 25, 32, 1);
   padding: 5% 20%;
   display: flex;
   justify-content: center;
+}
+
+.fade_in {
+  opacity: 1;
 }
 
 @media (max-width: 840px) {
