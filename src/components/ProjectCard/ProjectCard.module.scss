@@ -5,14 +5,15 @@ $content-border: rgba(2, 254, 255, 0.2);
 .card_container {
   height: 100%;
   width: 100%;
-  max-width: 325px;
+  max-width: 325px !important;
   display: flex;
   flex-direction: column;
   border: 1px solid transparent;
   border-radius: 10px;
   text-align: start;
   overflow: hidden;
-  transition: transform 0.25s ease-in-out;
+  z-index: 20;
+  transition: transform 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.03);
@@ -25,6 +26,8 @@ $content-border: rgba(2, 254, 255, 0.2);
   background-color: $content-border;
   padding: 5%;
   transition: padding 0.25s ease-in-out;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .card_title {
@@ -41,7 +44,7 @@ $content-border: rgba(2, 254, 255, 0.2);
   word-wrap: break-word;
   line-height: 1.6em;
   max-height: 3.2em;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .card_container:hover .card_description {
