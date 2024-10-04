@@ -18,10 +18,45 @@
     "url": "https://www.bcubed.com",
     "image": "/assets/images/bcubed-project.png",
     "title": "BCubed Website",
+    "description": "Completely different text that could cause problems but we'll see. Hopefully this works okay. but if it doesn't we'll check on it."
+  },
+  {
+    "type": "freelance",
+    "url": "https://www.bcubed.com",
+    "image": "/assets/images/bcubed-project.png",
+    "title": "BCubed Website",
     "description": "Website built for Engineering company using Wordpress Avada theme."
   },
   {
     "type": "freelance",
+    "url": "https://www.bcubed.com",
+    "image": "/assets/images/bcubed-project.png",
+    "title": "BCubed Website",
+    "description": "Website built for Engineering company using Wordpress Avada theme."
+  },
+  {
+    "type": "personal",
+    "url": "https://www.bcubed.com",
+    "image": "/assets/images/bcubed-project.png",
+    "title": "BCubed Website",
+    "description": "Completely different text that could cause problems but we'll see. Hopefully this works okay. but if it doesn't we'll check on it."
+  },
+  {
+    "type": "personal",
+    "url": "https://www.bcubed.com",
+    "image": "/assets/images/bcubed-project.png",
+    "title": "BCubed Website",
+    "description": "Website built for Engineering company using Wordpress Avada theme."
+  },
+  {
+    "type": "personal",
+    "url": "https://www.bcubed.com",
+    "image": "/assets/images/bcubed-project.png",
+    "title": "BCubed Website",
+    "description": "Website built for Engineering company using Wordpress Avada theme."
+  }, 
+  {
+    "type": "personal",
     "url": "https://www.bcubed.com",
     "image": "/assets/images/bcubed-project.png",
     "title": "BCubed Website",

@@ -1,25 +1,43 @@
 $text-color: theme('textColor.default');
+$content-border: rgba(2, 254, 255, 0.2);
 
 .slider_wrapper {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
+  user-select: none;
 }
 
 .slider {
-  position: relative;
   width: 100%;
   max-width: 1030px;
-  display: flex;
   overflow: hidden;
 }
 
 .slider_item {
+  display: flex;
+  justify-content: center;
   flex: 0 0 calc(100% / 3);
-  max-width: 325px;
-  padding: 5px;
+  padding: 5px 20px;
   transition: all 0.3s ease-in-out;
+}
+
+.itemGrid,
+.itemGrid_two {
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.itemGrid {
+  justify-content: flex-start;
+}
+
+.itemGrid_two {
+  justify-content: center;
+  gap: 10%;
 }
 
 .arrow_container {
@@ -53,6 +71,10 @@ $text-color: theme('textColor.default');
     cursor: pointer;
     transform: scale(1.3);
   }
+
+  &:active {
+    transform: scale(0.8);
+  }
 }
 
 .left_arrow,
@@ -82,21 +104,34 @@ $text-color: theme('textColor.default');
   transform: rotate(-45deg); 
 }
 
-.itemGrid,
-.itemGrid_two {
-  z-index: 2;
-  width: 100%;
+.pagination_dots {
+  position: absolute;
   display: flex;
-  align-items: center;
-  transition: transform 0.5s ease;
-}
-
-.itemGrid {
-  justify-content: flex-start;
-  gap: 1.5rem;
-}
-
-.itemGrid_two {
   justify-content: center;
-  gap: 10%;
+  bottom: -5%;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: $text-color;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.active_dot {
+  background-color: $content-border;
+}
+
+@media (max-width: 840px) {
+  .slider_item {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+
+  .itemGrid_two {
+    justify-content: flex-start;
+    gap: 0;
+  }
 }

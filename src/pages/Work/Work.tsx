@@ -138,7 +138,10 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
             if (el) targetRefsFade.current[5] = el;
           }}
         >
-          I
+          I collaborate with clients to design professional websites that are
+          tailored to their unique needs. Below, you can explore examples of the
+          projects I've completed, showcasing the diverse solutions and websites
+          I've created/updated.
         </p>
         <div
           className={styles.project_cards}
@@ -147,7 +150,8 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
           }}
         >
           {personalProjects?.length > 0 ? (
-            personalProjects.map((project, index) => (
+            <Slider>
+            {personalProjects.map((project, index) => (
               <ProjectCard
                 key={index}
                 url={project.url}
@@ -155,7 +159,8 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
                 title={project.title}
                 description={project.description}
               />
-            ))
+            ))}
+          </Slider>
           ) : (
             <div className={styles.empty_message}>
               <p>Personal projects coming soon...</p>
