@@ -54,12 +54,46 @@ $text-color: theme('textColor.default');
 .freelance_section {
   position: relative;
   background-color: $section-color;
-  padding: 5% 10%;
+  padding: 5% 10% 11% 10%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
   align-items: center;
   text-align: center;
+}
+
+.view_projects_container {
+  display: flex;
+  position: absolute;
+  bottom: 4%;
+  right: 3%;
+  flex-direction: row;
+  padding: 10px 20px;
+  gap: 5px;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  transition: transform .2s ease-in-out, opacity 1s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.right_arrow {
+  height: 16px;
+  width: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  border: 2px solid $text-color;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  transform: rotate(-45deg) translateY(4px);
 }
 
 .project_title,
