@@ -23,15 +23,9 @@ interface Project {
 const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
   const [projects, setProjects] = useState<Project[]>([]);
+  const { navigateWithTransition } = useNavigation();
 
   const images = require.context('../../assets/images/project-images', true);
-  // const imageList = images
-  //   .keys()
-  //   .reduce((acc: { [key: string]: string }, imagePath) => {
-  //     const key = imagePath.replace('./', '');
-  //     acc[key] = images(imagePath);
-  //     return acc;
-  //   }, {});
   const { hash } = useNavigation();
 
   useEffect(() => {
@@ -56,12 +50,19 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
     }
   }, [hash]);
 
-  const freelanceProjects = projects.filter(
+  let freelanceProjects = projects.filter(
     (project) => project.type === 'freelance',
   );
-  const personalProjects = projects.filter(
+  let personalProjects = projects.filter(
     (project) => project.type === 'personal',
   );
+
+  if (freelanceProjects?.length > 5) {
+    freelanceProjects = freelanceProjects.slice(0, 5);
+  }
+  if (personalProjects?.length > 5) {
+    personalProjects = personalProjects.slice(0, 5);
+  }
 
   return (
     <div className={styles.work_page}>
@@ -122,12 +123,29 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
             </div>
           )}
         </div>
+          <a
+            href="/projects"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateWithTransition('/projects');
+            }}
+          >
+            <div
+              className={styles.view_projects_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[4] = el;
+              }}
+            >
+              <h4>View All Projects</h4>
+              <div className={styles.right_arrow} />
+            </div>
+          </a>
       </div>
       <div id="personal-section" className={styles.personal_section}>
         <h2
           className={styles.project_title}
           ref={(el) => {
-            if (el) targetRefsFade.current[4] = el;
+            if (el) targetRefsFade.current[5] = el;
           }}
         >
           Personal
@@ -135,38 +153,52 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
         <p
           className={styles.project_content}
           ref={(el) => {
-            if (el) targetRefsFade.current[5] = el;
+            if (el) targetRefsFade.current[6] = el;
           }}
         >
-          I collaborate with clients to design professional websites that are
-          tailored to their unique needs. Below, you can explore examples of the
-          projects I've completed, showcasing the diverse solutions and websites
-          I've created/updated.
+          Occasionally, I like to take on projects to sharpen my skills or simply because they spark my interest. Below, you'll find a selection of these projects, showcasing the areas I find fascinating and enjoy exploring.
         </p>
         <div
           className={styles.project_cards}
           ref={(el) => {
-            if (el) targetRefsFade.current[6] = el;
+            if (el) targetRefsFade.current[7] = el;
           }}
         >
           {personalProjects?.length > 0 ? (
             <Slider>
-            {personalProjects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                url={project.url}
-                image={project.image}
-                title={project.title}
-                description={project.description}
-              />
-            ))}
-          </Slider>
+              {personalProjects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  url={project.url}
+                  image={project.image}
+                  title={project.title}
+                  description={project.description}
+                />
+              ))}
+            </Slider>
           ) : (
             <div className={styles.empty_message}>
               <p>Personal projects coming soon...</p>
             </div>
           )}
         </div>
+        <a
+            href="/projects"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateWithTransition('/projects');
+            }}
+          >
+            <div
+              className={styles.view_projects_container}
+              ref={(el) => {
+                if (el) targetRefsFade.current[8] = el;
+              }}
+            >
+              <h4>View All Projects</h4>
+              <div className={styles.right_arrow} />
+            </div>
+          </a>
       </div>
       <div className={styles.experience_section}>
         <h2>Experience</h2>

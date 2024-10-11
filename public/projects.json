@@ -8,58 +8,16 @@
   },
   {
     "type": "freelance",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
-  },
-  {
-    "type": "freelance",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Completely different text that could cause problems but we'll see. Hopefully this works okay. but if it doesn't we'll check on it."
-  },
-  {
-    "type": "freelance",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
-  },
-  {
-    "type": "freelance",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
+    "url": "https://www.cwcwaco.com",
+    "image": "/assets/images/cwcwaco-project.png",
+    "title": "CWCW Website",
+    "description": "Website built for Complete Women's Care clinic in Waco, TX using Wordpress."
   },
   {
     "type": "personal",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Completely different text that could cause problems but we'll see. Hopefully this works okay. but if it doesn't we'll check on it."
-  },
-  {
-    "type": "personal",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
-  },
-  {
-    "type": "personal",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
-  }, 
-  {
-    "type": "personal",
-    "url": "https://www.bcubed.com",
-    "image": "/assets/images/bcubed-project.png",
-    "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
+    "url": "/",
+    "image": "/assets/images/personal-portfolio-project.png",
+    "title": "Personal Portfolio",
+    "description": "Website built to showcase development and design experience using React Typescript and Spring Boot Java."
   }
 ]

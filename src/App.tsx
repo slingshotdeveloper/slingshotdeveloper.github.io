@@ -12,6 +12,7 @@ import { NavigationProvider } from './context/NavigationContext';
 import { ContactModal } from './components/ContactModal/ContactModal';
 import About from './pages/About/About';
 import Work from './pages/Work/Work';
+import Projects from './pages/Projects/Projects';
 
 const App: React.FC = () => {
   const [initialLoad, setInitialLoad] = useState(true);
@@ -34,9 +35,10 @@ const App: React.FC = () => {
       <div className={styles.site_background} />
       <Header toggleContactModal={toggleContactModal}/>
       <Routes>
-        <Route path="/" element={<Home toggleContactModal={toggleContactModal}/>} />
-        <Route path="/about" element={<About toggleContactModal={toggleContactModal}/>} />
-        <Route path="/work" element={<Work toggleContactModal={toggleContactModal}/>} />
+        <Route path='/' element={<Home toggleContactModal={toggleContactModal}/>} />
+        <Route path='/about' element={<About toggleContactModal={toggleContactModal}/>} />
+        <Route path='/work' element={<Work toggleContactModal={toggleContactModal}/>} />
+        <Route path='/projects' element={<Projects/>}/>
       </Routes>
       <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
       <Footer />

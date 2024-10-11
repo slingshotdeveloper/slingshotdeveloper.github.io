@@ -17,7 +17,7 @@ const ProjectCard = ({
   return (
     <a href={url} target='_blank' rel='noopener noreferrer'>
       <div className={styles.card_container}>
-        <img src={image} alt={title} className={styles.card_image}></img>
+        <img src={image} alt={title}></img>
         <div className={styles.card_content}>
           <h4 className={styles.card_title}>{title}</h4>
           <p className={styles.card_description}>{description}</p>

@@ -1,5 +1,6 @@
 $text-color: theme('textColor.default');
 $content-border: rgba(2, 254, 255, 0.2);
+$section-color: rgba(3, 25, 32, 1);
 
 
 .card_container {
@@ -8,7 +9,7 @@ $content-border: rgba(2, 254, 255, 0.2);
   max-width: 315px !important;
   display: flex;
   flex-direction: column;
-  border: 1px solid transparent;
+  border: 1px solid $section-color;
   border-radius: 10px;
   text-align: start;
   overflow: hidden;
@@ -17,6 +18,10 @@ $content-border: rgba(2, 254, 255, 0.2);
 
   &:hover {
     transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.97);
   }
 }
 
