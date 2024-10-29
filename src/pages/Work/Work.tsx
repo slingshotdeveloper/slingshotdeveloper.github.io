@@ -7,6 +7,8 @@ import { useNavigation } from '../../context/NavigationContext';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import axios from 'axios';
 import Slider from '../../components/Slider/Slider';
+import PieChart from '../../components/PieChart/PieChart';
+import { useMediaQuery } from '../../utils/useMediaQuery';
 
 interface WorkProps {
   toggleContactModal: () => void;
@@ -24,9 +26,90 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
   const [projects, setProjects] = useState<Project[]>([]);
   const { navigateWithTransition } = useNavigation();
+  const isMobile = useMediaQuery({ 'max-width': 840 });
 
   const images = require.context('../../assets/images/project-images', true);
   const { hash } = useNavigation();
+
+  const segmentSize = isMobile ? 300 : 425;
+  const frontendChartData = [
+    {
+      name: 'React',
+      value: 30,
+      info: 'I use React for most of my UI projects, including in my full-time role. I love how it simplifies creating reusable components, and its vast library ecosystem makes development very efficient and expansive.',
+      skillLevel: 9,
+      radius: 0.6,
+      index: 0,
+    },
+    {
+      name: 'CSS',
+      value: 25,
+      info: 'I use CSS in just about every frontend project, whether it\'s in a React project or even a Wordpress site. I typically use SCSS superset but have also worked with Tailwind CSS.',
+      skillLevel: 8,
+      radius: 0.6,
+      index: 1,
+    },
+    {
+      name: 'Typescript',
+      value: 20,
+      info: 'TypeScript has become my go-to since I began using it in my full-time role. I appreciate the added safety of type checking and the structured logic it brings. It offers all the functionality of JavaScript with the added benefit of type protection.',
+      skillLevel: 7,
+      radius: 0.65,
+      index: 2,
+    },
+    {
+      name: 'HTML',
+      value: 10,
+      info: 'I use HTML in nearly every frontend project to structure webpages and define components, working alongside CSS to build and style the content',
+      skillLevel: 8,
+      radius: 0.7,
+      index: 3,
+    },
+    {
+      name: 'Javascript',
+      value: 10,
+      info: 'I regularly use Javascript to enhance the functionality of webpages and projects. It allows me to create much more engaging and interactive sites and components, such as this modal popping up when hovering over a pie chart segment.',
+      skillLevel: 7,
+      radius: 0.75,
+      index: 4,
+    },
+    {
+      name: 'PHP',
+      value: 5,
+      info: 'I have experience working with PHP on a client\'s WordPress website, specifically utilizing the theme file editor. This approach facilitated the seamless integration of custom fields into the site.',
+      skillLevel: 2.5,
+      radius: 0.75,
+      index: 5,
+    },
+  ];
+  const backendChartData = [
+    {
+      name: 'Java',
+      value: 60,
+      info: 'I primarily use Java for my projects and in my full-time role, often opting for Java Spring Boot for API development due to its functionality. For instance, the email feature for contacting me on this site is powered by a Java API.',
+      skillLevel: 9,
+      radius: 0.55,
+      index: 0,
+    },
+    {
+      name: 'Python',
+      value: 12.5,
+      info: 'I find Python to be really enjoyable to work with. I appreciate its concise syntax and the speed at which I can write code. I used it for a web-scraping project and often collaborate with my brother on stock investment analysis and strategy programs using Python.',
+      skillLevel: 5,
+      radius: 0.65,
+      index: 1,
+    },
+    { name: 'SQL', value: 10, info: 'Any time I need a project to have a database, I use SQL. The table creation and query functionality make it very easy to use and send/retrieve data.', skillLevel: 5, radius: 0.7, index: 2 },
+    {
+      name: 'Kotlin',
+      value: 7.55,
+      info: 'One API I worked with in my full-time role utilized Kotlin instead of Java, allowing me to gain some experience with it. I found Kotlin to be quite similar to Java, but with a more concise syntax and some unique features.',
+      skillLevel: 3,
+      radius: 0.75,
+      index: 3
+    },
+    { name: 'C++', value: 5, info: 'C++ is the first language I learned when learning computer science in college. I was a part of a group project that created a super mario bros game with user functionality using C++. It was really cool!', skillLevel: 4, radius: 0.75, index: 4 },
+  ];
 
   useEffect(() => {
     axios
@@ -123,23 +206,23 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
             </div>
           )}
         </div>
-          <a
-            href="/projects"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateWithTransition('/projects');
+        <a
+          href="/projects"
+          onClick={(e) => {
+            e.preventDefault();
+            navigateWithTransition('/projects');
+          }}
+        >
+          <div
+            className={styles.view_projects_container}
+            ref={(el) => {
+              if (el) targetRefsFade.current[4] = el;
             }}
           >
-            <div
-              className={styles.view_projects_container}
-              ref={(el) => {
-                if (el) targetRefsFade.current[4] = el;
-              }}
-            >
-              <h4>View All Projects</h4>
-              <div className={styles.right_arrow} />
-            </div>
-          </a>
+            <h4>View All Projects</h4>
+            <div className={styles.right_arrow} />
+          </div>
+        </a>
       </div>
       <div id="personal-section" className={styles.personal_section}>
         <h2
@@ -156,7 +239,10 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
             if (el) targetRefsFade.current[6] = el;
           }}
         >
-          Occasionally, I like to take on projects to sharpen my skills or simply because they spark my interest. Below, you'll find a selection of these projects, showcasing the areas I find fascinating and enjoy exploring.
+          Occasionally, I like to take on projects to sharpen my skills or
+          simply because they spark my interest. Below, you'll find a selection
+          of these projects, showcasing the areas I find fascinating and enjoy
+          exploring.
         </p>
         <div
           className={styles.project_cards}
@@ -183,25 +269,49 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
           )}
         </div>
         <a
-            href="/projects"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateWithTransition('/projects');
+          href="/projects"
+          onClick={(e) => {
+            e.preventDefault();
+            navigateWithTransition('/projects');
+          }}
+        >
+          <div
+            className={styles.view_projects_container}
+            ref={(el) => {
+              if (el) targetRefsFade.current[8] = el;
             }}
           >
-            <div
-              className={styles.view_projects_container}
-              ref={(el) => {
-                if (el) targetRefsFade.current[8] = el;
-              }}
-            >
-              <h4>View All Projects</h4>
-              <div className={styles.right_arrow} />
-            </div>
-          </a>
+            <h4>View All Projects</h4>
+            <div className={styles.right_arrow} />
+          </div>
+        </a>
       </div>
       <div className={styles.experience_section}>
-        <h2>Experience</h2>
+        <div
+          className={styles.experience_section_title_container}
+          ref={(el) => {
+            if (el) targetRefsFade.current[9] = el;
+          }}
+        >
+          <h2>Experience</h2>
+          <h5>(hover over each segment to learn more)</h5>
+          <p>* pie charts represent how frequently I work with specific technologies</p>
+        </div>
+        <div
+          className={styles.experience_container}
+          ref={(el) => {
+            if (el) targetRefsFade.current[10] = el;
+          }}
+        >
+          <div className={styles.experience_graph_container}>
+            <PieChart data={frontendChartData} size={segmentSize} />
+            <h3>Frontend</h3>
+          </div>
+          <div className={styles.experience_graph_container}>
+            <PieChart data={backendChartData} size={segmentSize} />
+            <h3>Backend</h3>
+          </div>
+        </div>
       </div>
     </div>
   );
