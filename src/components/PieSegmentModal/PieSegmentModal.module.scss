@@ -1,0 +1,53 @@
+$border-color: rgba(2, 254, 255, 0.35);
+$site-color: rgba(11, 34, 41, 0.9);
+$text-color: theme('textColor.default');
+
+.segment_modal_container {
+  width: 275px;
+  right: 0;
+  top: -50%;
+  border: 5px solid $border-color;
+  border-radius: 10px;
+  background-color: $site-color;
+  padding: 20px; 
+  box-shadow: 0px 0px 35px $border-color;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.segment_title {
+  margin-bottom: 10px;
+}
+
+.skill_level {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill_level_container {
+  border: 2px solid $border-color;
+  padding: 2px;
+  width: 100%;
+}
+
+.skill_level_title {
+  text-wrap: nowrap;
+}
+
+.separator {
+  height: 2px;
+  width: 100%;
+  background-color: $text-color;
+  border-radius: 10px;
+}
+
+.segment_info {
+  width: 100%;
+  font-size: 16px; 
+}
