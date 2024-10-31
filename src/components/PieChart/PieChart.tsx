@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './PieChart.module.scss';
 import PieSegmentModal from '../PieSegmentModal/PieSegmentModal';
+import { useMediaQuery } from '../../utils/useMediaQuery';
 
 interface Segment {
   name: string;
@@ -20,6 +21,8 @@ const PieChart: React.FC<PieChartProps> = ({ data, size }) => {
   const outerRadius = size / 2;
   const innerRadius = outerRadius * 0.008;
   const [hoveredSegment, setHoveredSegment] = useState(null);
+  const [clickedSegment, setClickedSegment] = useState(null);
+  const isMobile = useMediaQuery({ 'max-width': 840 });
 
   const describeArc = (
     x: number,
@@ -90,6 +93,10 @@ const PieChart: React.FC<PieChartProps> = ({ data, size }) => {
 
   const segments = calculateSegments(data);
 
+  const closeModal = () => {
+    setClickedSegment(null);
+  }
+
   return (
     <div style={{ position: 'relative', width: size, height: size }}>
       <svg width={size} height={size} style={{ overflow: 'visible' }}>
@@ -122,6 +129,7 @@ const PieChart: React.FC<PieChartProps> = ({ data, size }) => {
                 strokeWidth={'4px'}
                 onMouseEnter={() => setHoveredSegment(segment)}
                 onMouseLeave={() => setHoveredSegment(null)}
+                onClick={() => setClickedSegment(segment)}
               />
               <text
                 className={styles.segment_name}
@@ -138,7 +146,7 @@ const PieChart: React.FC<PieChartProps> = ({ data, size }) => {
           );
         })}
       </svg>
-      {hoveredSegment && (
+      {hoveredSegment && !isMobile && (
         <div
           className={styles.hovered_segment_modal}
           style={{
@@ -152,6 +160,14 @@ const PieChart: React.FC<PieChartProps> = ({ data, size }) => {
             skillLevel={hoveredSegment?.skillLevel}
           />
         </div>
+      )}
+      {isMobile && clickedSegment && (
+        <PieSegmentModal
+          name={clickedSegment?.name}
+          info={clickedSegment?.info}
+          skillLevel={clickedSegment?.skillLevel}
+          closeModal={closeModal}
+        />
       )}
     </div>
   );

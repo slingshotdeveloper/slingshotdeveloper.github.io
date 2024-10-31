@@ -17,6 +17,9 @@ import Projects from './pages/Projects/Projects';
 const App: React.FC = () => {
   const [initialLoad, setInitialLoad] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [shouldRunAnimation, setShouldRunAnimation] = useState(() => {
+    return sessionStorage.getItem('hasRunAnimation') === null;
+  });
 
   const toggleContactModal = () => {
     setIsContactModalOpen(!isContactModalOpen);
@@ -29,19 +32,37 @@ const App: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const hasRunAnimation = sessionStorage.getItem('hasRunAnimation');
+
+    if (!hasRunAnimation) {
+      sessionStorage.setItem('hasRunAnimation', 'true');
+    } else {
+      const timeout = setTimeout(() => {
+        setShouldRunAnimation(false);
+      }, 12500);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [shouldRunAnimation]);
+
+  const turnOffAnimation = () => {
+    setShouldRunAnimation(false);
+  };
+
   return (
     <NavigationProvider>
     <div className={styles.main}>
       <div className={styles.site_background} />
-      <Header toggleContactModal={toggleContactModal}/>
+      <Header turnOffAnimation={turnOffAnimation} toggleContactModal={toggleContactModal}/>
       <Routes>
-        <Route path='/' element={<Home toggleContactModal={toggleContactModal}/>} />
+        <Route path='/' element={<Home shouldRunAnimation={shouldRunAnimation} toggleContactModal={toggleContactModal}/>} />
         <Route path='/about' element={<About toggleContactModal={toggleContactModal}/>} />
         <Route path='/work' element={<Work toggleContactModal={toggleContactModal}/>} />
         <Route path='/projects' element={<Projects/>}/>
       </Routes>
       <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
     </NavigationProvider>
   );

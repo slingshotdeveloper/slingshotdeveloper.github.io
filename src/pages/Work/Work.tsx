@@ -31,7 +31,7 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
   const images = require.context('../../assets/images/project-images', true);
   const { hash } = useNavigation();
 
-  const segmentSize = isMobile ? 300 : 425;
+  const segmentSize = isMobile ? 325 : 425;
   const frontendChartData = [
     {
       name: 'React',
@@ -94,7 +94,7 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
     {
       name: 'Python',
       value: 12.5,
-      info: 'I find Python to be really enjoyable to work with. I appreciate its concise syntax and the speed at which I can write code. I used it for a web-scraping project and often collaborate with my brother on stock investment analysis and strategy programs using Python.',
+      info: 'I find Python to be really enjoyable to work with. I appreciate its concise syntax and the speed at which I can write code. I used it for a web-scraping project and sometimes collaborate with my brother on stock investment analysis and strategy programs using Python.',
       skillLevel: 5,
       radius: 0.65,
       index: 1,
@@ -294,20 +294,21 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
           }}
         >
           <h2>Experience</h2>
-          <h5>(hover over each segment to learn more)</h5>
+          <h5>{isMobile ? '(click on each segment to learn more)' : '(hover over each segment to learn more)'}</h5>
           <p>* pie charts represent how frequently I work with specific technologies</p>
         </div>
         <div
           className={styles.experience_container}
-          ref={(el) => {
-            if (el) targetRefsFade.current[10] = el;
-          }}
         >
-          <div className={styles.experience_graph_container}>
+          <div className={styles.experience_graph_container} ref={(el) => {
+            if (el) targetRefsFade.current[10] = el;
+          }}>
             <PieChart data={frontendChartData} size={segmentSize} />
             <h3>Frontend</h3>
           </div>
-          <div className={styles.experience_graph_container}>
+          <div className={styles.experience_graph_container} ref={(el) => {
+            if (el) targetRefsFade.current[12] = el;
+          }}>
             <PieChart data={backendChartData} size={segmentSize} />
             <h3>Backend</h3>
           </div>
