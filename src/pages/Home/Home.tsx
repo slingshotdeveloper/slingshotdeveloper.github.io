@@ -13,36 +13,19 @@ import { useNavigation } from '../../context/NavigationContext';
 import { useMediaQuery } from '../../utils/useMediaQuery';
 
 interface HomeProps {
+  shouldRunAnimation: boolean;
   toggleContactModal: () => void;
 }
 
-const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
-  const [shouldRunAnimation, setShouldRunAnimation] = useState(() => {
-    return sessionStorage.getItem('hasRunAnimation') === null;
-  });
+const Home = ({ shouldRunAnimation, toggleContactModal }: HomeProps): ReactElement => {
   const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
   const targetRefsBorderFade = useIntersectionObserver(styles.fade_in, 0.1);
   const { navigateWithTransition } = useNavigation();
   const isMobile = useMediaQuery({ 'max-width': 840 });
-  
-
-  useEffect(() => {
-    const hasRunAnimation = sessionStorage.getItem('hasRunAnimation');
-
-    if (!hasRunAnimation) {
-      sessionStorage.setItem('hasRunAnimation', 'true');
-    } else {
-      const timeout = setTimeout(() => {
-        setShouldRunAnimation(false);
-      }, 12500);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [shouldRunAnimation]);
 
   return (
     <>
-       { !isMobile && <Background shouldRunAnimation={shouldRunAnimation} /> }
+      {!isMobile && <Background shouldRunAnimation={shouldRunAnimation} />}
       <div className={styles.home_page}>
         <div className={styles.landing_section}>
           {shouldRunAnimation && <StartUpScreen />}
@@ -139,14 +122,18 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href='/about' onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>
+              <a
+                href="/about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithTransition('/about');
+                }}
+              >
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.user_icon}`}
                   />
-                  <UserIcon
-                    className={styles.user_icon_image}
-                  />
+                  <UserIcon className={styles.user_icon_image} />
                 </div>
               </a>
             </div>
@@ -159,7 +146,13 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
                   and the things I love to do!
                 </p>
               </div>
-              <a href='/about' onClick={(e) => { e.preventDefault(); navigateWithTransition('/about')}}>
+              <a
+                href="/about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithTransition('/about');
+                }}
+              >
                 <button>About Me</button>
               </a>
             </div>
@@ -173,14 +166,18 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#freelance-section')}}>
+              <a
+                href="/work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithTransition('/work#freelance-section');
+                }}
+              >
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.computer_icon}`}
                   />
-                  <ComputerIcon
-                    className={styles.computer_icon_image}
-                  />
+                  <ComputerIcon className={styles.computer_icon_image} />
                 </div>
               </a>
             </div>
@@ -196,7 +193,13 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
                   and read testimonials from satisfied clients.
                 </p>
               </div>
-              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#freelance-section')}}>
+              <a
+                href="/work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithTransition('/work#freelance-section');
+                }}
+              >
                 <button>Freelance Work</button>
               </a>
             </div>
@@ -210,14 +213,18 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
             }}
           >
             <div className={styles.icon_container}>
-              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#personal-section')}}>
+              <a
+                href="/work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithTransition('/work#personal-section');
+                }}
+              >
                 <div className={styles.icon_wrapper}>
                   <div
                     className={`${styles.icon_border} ${styles.react_icon}`}
                   />
-                  <ReactIcon
-                    className={styles.react_icon_image}
-                  />
+                  <ReactIcon className={styles.react_icon_image} />
                 </div>
               </a>
             </div>
@@ -233,7 +240,13 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
                   done!
                 </p>
               </div>
-              <a href='/work' onClick={(e) => { e.preventDefault(); navigateWithTransition('/work#personal-section')}}>
+              <a
+                href="/work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithTransition('/work#personal-section');
+                }}
+              >
                 <button>Personal Projects</button>
               </a>
             </div>
@@ -246,26 +259,33 @@ const Home = ({ toggleContactModal }: HomeProps): ReactElement => {
               }
             }}
           >
-            <div className={styles.icon_container} onClick={() => {toggleContactModal()}}>
-                <div className={styles.icon_wrapper}>
-                  <div
-                    className={`${styles.icon_border} ${styles.mail_icon}`}
-                  />
-                  <MailIcon
-                    className={styles.mail_icon_image}
-                  />
-                </div>
+            <div
+              className={styles.icon_container}
+              onClick={() => {
+                toggleContactModal();
+              }}
+            >
+              <div className={styles.icon_wrapper}>
+                <div className={`${styles.icon_border} ${styles.mail_icon}`} />
+                <MailIcon className={styles.mail_icon_image} />
+              </div>
             </div>
             <div className={styles.info_section_text_container}>
-              <h3 className={styles.info_section_text_title}>
-                Work with me
-              </h3>
+              <h3 className={styles.info_section_text_title}>Work with me</h3>
               <div className={styles.info_section_text_content}>
                 <p>
-                For inquiries about hiring me for your business needs, click the button below and send me a message. I look forward to discussing how we can collaborate to achieve your vision! 
+                  For inquiries about hiring me for your business needs, click
+                  the button below and send me a message. I look forward to
+                  discussing how we can collaborate to achieve your vision!
                 </p>
               </div>
-                <button onClick={() => {toggleContactModal()}}>Contact Me</button>
+              <button
+                onClick={() => {
+                  toggleContactModal();
+                }}
+              >
+                Contact Me
+              </button>
             </div>
           </div>
         </div>

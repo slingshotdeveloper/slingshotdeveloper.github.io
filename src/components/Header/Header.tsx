@@ -7,10 +7,11 @@ import { useMediaQuery } from '../../utils/useMediaQuery';
 import { MobileHeader } from '../MobileHeader/MobileHeader';
 
 interface HeaderProps {
+  turnOffAnimation: () => void;
   toggleContactModal: () => void;
 }
 
-const Header = ({ toggleContactModal }: HeaderProps): ReactElement => {
+const Header = ({ turnOffAnimation, toggleContactModal }: HeaderProps): ReactElement => {
   const { navigateWithTransition } = useNavigation();
   const isMobile = useMediaQuery({ 'max-width': 640 });
 
@@ -25,6 +26,7 @@ const Header = ({ toggleContactModal }: HeaderProps): ReactElement => {
               to="/"
               className={styles.logo}
               onClick={(e) => {
+                turnOffAnimation();
                 e.preventDefault();
                 navigateWithTransition('/');
               }}
@@ -37,6 +39,7 @@ const Header = ({ toggleContactModal }: HeaderProps): ReactElement => {
                   to="/"
                   className={styles.nav_link}
                   onClick={(e) => {
+                    turnOffAnimation();
                     e.preventDefault();
                     navigateWithTransition('/');
                   }}
@@ -49,6 +52,7 @@ const Header = ({ toggleContactModal }: HeaderProps): ReactElement => {
                   to="/about"
                   className={styles.nav_link}
                   onClick={(e) => {
+                    turnOffAnimation();
                     e.preventDefault();
                     navigateWithTransition('/about');
                   }}
@@ -61,6 +65,7 @@ const Header = ({ toggleContactModal }: HeaderProps): ReactElement => {
                   to="/work"
                   className={styles.nav_link}
                   onClick={(e) => {
+                    turnOffAnimation();
                     e.preventDefault();
                     navigateWithTransition('/work');
                   }}

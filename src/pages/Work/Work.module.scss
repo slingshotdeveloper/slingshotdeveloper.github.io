@@ -54,7 +54,7 @@ $text-color: theme('textColor.default');
 .freelance_section {
   position: relative;
   background-color: $section-color;
-  padding: 5% 10% 11% 10%;
+  padding: 5% 10%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -73,7 +73,9 @@ $text-color: theme('textColor.default');
   justify-content: flex-end;
   align-items: center;
   opacity: 0;
-  transition: transform .2s ease-in-out, opacity 1s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 1s ease-in-out;
 
   &:hover {
     cursor: pointer;
@@ -137,6 +139,7 @@ $text-color: theme('textColor.default');
   position: relative;
   background-color: $section-color;
   padding: 5% 10%;
+  padding-bottom: 10%;
   gap: 5rem;
   display: flex;
   flex-direction: column;
@@ -159,9 +162,7 @@ $text-color: theme('textColor.default');
   width: 100%;
   gap: 5%;
   align-items: center;
-  justify-content: center;  
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  justify-content: center;
 }
 
 .experience_graph_container {
@@ -174,6 +175,8 @@ $text-color: theme('textColor.default');
   gap: 3rem;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 .fade_in {
@@ -196,19 +199,44 @@ $text-color: theme('textColor.default');
   }
 
   .project_title,
-.project_content {
-  padding: 0 5%;
-}
+  .project_content {
+    padding: 0 5%;
+  }
 
-  .freelance_section, 
-  .personal_section {
+  .freelance_section,
+  .personal_section,
+  .experience_section {
     padding: 7.5% 0 15% 0;
     gap: 2rem;
+  }
+
+  .view_projects_container {
+    bottom: 1%;
+    right: 2%;
+  }
+  .experience_section {
+    padding: 7.5% 5%;
+    padding-bottom: 20%;
+  }
+  .experience_section_title_container {
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .experience_container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .experience_graph_container {
+    flex-basis: 100%;
+    gap: 1rem;
   }
 }
 
 @keyframes clippath {
-  0%, 100% {
+  0%,
+  100% {
     clip-path: inset(0 0 98% 0);
   }
 
@@ -224,7 +252,8 @@ $text-color: theme('textColor.default');
 }
 
 @keyframes clippath2 {
-  0%, 100% {
+  0%,
+  100% {
     clip-path: inset(98% 0 0 0);
   }
 
