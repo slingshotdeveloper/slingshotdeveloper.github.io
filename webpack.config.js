@@ -6,8 +6,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/personal-portfolio.tsx',
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js', 
+    clean: true,
     publicPath: '/',
   },
   resolve: {
@@ -43,13 +44,13 @@ module.exports = {
           {
             loader: '@svgr/webpack',
             options: {
-              svgo: false, // You can customize SVGR options here
+              svgo: false,
             },
           },
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/icons/[name].[hash].[ext]', // Adjust the path as needed
+              name: 'assets/icons/[name].[hash].[ext]',
             },
           },
         ],
@@ -66,11 +67,18 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html', // Specify the template file
+      template: 'public/index.html',
+      filename: 'index.html',
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public', to: '' }, // Copy all files from public to public in dist
+        {
+          from: 'public',
+          to: '',
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
       ],
     }),
   ],
