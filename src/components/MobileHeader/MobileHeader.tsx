@@ -5,10 +5,11 @@ import { useNavigation } from '../../context/NavigationContext';
 import { Link } from 'react-router-dom';
 
 interface MobileHeaderProps {
+  turnOffAnimation: () => void;
   toggleContactModal: () => void;
 }
 
-export const MobileHeader = ({ toggleContactModal }: MobileHeaderProps): ReactElement => {
+export const MobileHeader = ({ turnOffAnimation, toggleContactModal }: MobileHeaderProps): ReactElement => {
   const { navigateWithTransition } = useNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -37,7 +38,7 @@ export const MobileHeader = ({ toggleContactModal }: MobileHeaderProps): ReactEl
           <Link
             to="/"
             className={styles.logo}
-            onClick={(e) => handleNavigation(e, '/')}
+            onClick={(e) => {turnOffAnimation(); handleNavigation(e, '/')}}
           >
             <img src={avatar} alt="Logo" className={styles.logo_img} />
           </Link>
@@ -56,6 +57,7 @@ export const MobileHeader = ({ toggleContactModal }: MobileHeaderProps): ReactEl
               className={styles.link}
               to="/"
               onClick={(e) => {
+                turnOffAnimation();
                 handleNavigation(e, '/');
               }}
             >
@@ -67,6 +69,7 @@ export const MobileHeader = ({ toggleContactModal }: MobileHeaderProps): ReactEl
               className={styles.link}
               to="/about"
               onClick={(e) => {
+                turnOffAnimation();
                 handleNavigation(e, '/about');
               }}
             >
@@ -78,6 +81,7 @@ export const MobileHeader = ({ toggleContactModal }: MobileHeaderProps): ReactEl
               className={styles.link}
               to="/work"
               onClick={(e) => {
+                turnOffAnimation();
                 handleNavigation(e, '/work');
               }}
             >

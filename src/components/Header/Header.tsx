@@ -18,7 +18,7 @@ const Header = ({ turnOffAnimation, toggleContactModal }: HeaderProps): ReactEle
   return (
     <header>
       {isMobile ? (
-        <MobileHeader toggleContactModal={toggleContactModal}/>
+        <MobileHeader turnOffAnimation={turnOffAnimation} toggleContactModal={toggleContactModal}/>
       ) : (
         <nav className={styles.navbar}>
           <div className={styles.navbar_container}>

@@ -1,6 +1,7 @@
 $menu-background: rgba(11, 34, 41, 0.6);
 $menu-lines: rgba(190, 190, 190, 1);
 $holo-color: rgba(2, 254, 255, 0.5);
+$site-color: rgba(11, 34, 41, 0.9);
 
 .navbar {
   background-color: transparent;
@@ -72,7 +73,7 @@ $holo-color: rgba(2, 254, 255, 0.5);
   display: flex;
   position: absolute;
   flex-direction: column;
-  backdrop-filter: blur(12px);
+  background-color: $site-color;
   top: 100%;
   list-style: none;
   gap: 6px;
