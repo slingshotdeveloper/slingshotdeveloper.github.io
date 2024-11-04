@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+
+# React
+build/
+.cache/
+dist/
+.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+
+# VS Code
+.vscode/
