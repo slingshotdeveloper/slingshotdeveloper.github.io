@@ -70,7 +70,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public', to: 'public' }, // Copy all files from public to public in dist
+        { from: 'public', to: '' }, // Copy all files from public to public in dist
       ],
     }),
   ],
