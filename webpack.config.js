@@ -1,13 +1,14 @@
 /* eslint-disable */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/personal-portfolio.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/personal-portfolio/',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -66,6 +67,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html', // Specify the template file
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public', to: 'public' }, // Copy all files from public to public in dist
+      ],
     }),
   ],
 };

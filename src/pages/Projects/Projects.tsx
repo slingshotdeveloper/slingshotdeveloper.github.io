@@ -19,7 +19,7 @@ const Projects = (): ReactElement => {
 
   useEffect(() => {
     axios
-      .get('/projects.json')
+      .get('/public/projects.json')
       .then((response) => {
         setProjects(response.data);
       })

@@ -113,7 +113,7 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
 
   useEffect(() => {
     axios
-      .get('/projects.json')
+      .get('/public/projects.json')
       .then((response) => {
         setProjects(response.data);
       })
