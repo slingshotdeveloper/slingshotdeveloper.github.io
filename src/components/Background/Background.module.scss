@@ -133,7 +133,7 @@ $radial-indicator-radius: 125px;
 
 .random_text {
   overflow: hidden;
-  white-space: nowrap; /* Correct property for nowrap */
+  white-space: nowrap;
   width: 0;
   animation-duration: 25s;
   animation-timing-function: linear;
