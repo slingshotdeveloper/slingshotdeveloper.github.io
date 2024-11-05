@@ -15,7 +15,7 @@ const StartUpScreen: React.FC = () => {
           }
           return prevProgress + 1;
         });
-      }, 15);
+      }, 10);
 
       return () => clearInterval(interval);
     }, 500);
