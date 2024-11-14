@@ -9,7 +9,10 @@ interface MobileHeaderProps {
   toggleContactModal: () => void;
 }
 
-export const MobileHeader = ({ turnOffAnimation, toggleContactModal }: MobileHeaderProps): ReactElement => {
+export const MobileHeader = ({
+  turnOffAnimation,
+  toggleContactModal,
+}: MobileHeaderProps): ReactElement => {
   const { navigateWithTransition } = useNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -29,7 +32,7 @@ export const MobileHeader = ({ turnOffAnimation, toggleContactModal }: MobileHea
   const handleContactClose = () => {
     toggleContactModal();
     toggleMenuOpen();
-  }
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -38,10 +41,15 @@ export const MobileHeader = ({ turnOffAnimation, toggleContactModal }: MobileHea
           <Link
             to="/"
             className={styles.logo}
-            onClick={(e) => {turnOffAnimation(); handleNavigation(e, '/')}}
+            onClick={(e) => {
+              turnOffAnimation();
+              e.preventDefault();
+              navigateWithTransition('/');
+            }}
           >
             <img src={avatar} alt="Logo" className={styles.logo_img} />
           </Link>
+          <h2 className={styles.header_title}>SlingShot Dev</h2>
           <div
             className={`${styles.hamburger_menu} ${isMenuOpen && styles.expanded}`}
             onClick={toggleMenuOpen}
@@ -89,10 +97,7 @@ export const MobileHeader = ({ turnOffAnimation, toggleContactModal }: MobileHea
             </Link>
           </div>
           <div className={styles.nav_link}>
-            <li
-              className={styles.link}
-              onClick={handleContactClose}
-            >
+            <li className={styles.link} onClick={handleContactClose}>
               Contact
             </li>
           </div>
