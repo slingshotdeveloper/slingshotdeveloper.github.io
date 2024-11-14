@@ -19,6 +19,14 @@ $holo-color: rgba(2, 254, 255, 0.5);
     font-size: 20px;
   }
 
+  .navbar_logo_container {
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    text-wrap: nowrap;
+    width: 100%;
+  }
+
   .logo {
     font-size: 1.125rem;
     .logo_img {

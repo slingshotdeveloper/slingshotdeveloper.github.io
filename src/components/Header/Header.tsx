@@ -11,28 +11,37 @@ interface HeaderProps {
   toggleContactModal: () => void;
 }
 
-const Header = ({ turnOffAnimation, toggleContactModal }: HeaderProps): ReactElement => {
+const Header = ({
+  turnOffAnimation,
+  toggleContactModal,
+}: HeaderProps): ReactElement => {
   const { navigateWithTransition } = useNavigation();
-  const isMobile = useMediaQuery({ 'max-width': 640 });
+  const isMobile = useMediaQuery({ 'max-width': 840 });
 
   return (
     <header>
       {isMobile ? (
-        <MobileHeader turnOffAnimation={turnOffAnimation} toggleContactModal={toggleContactModal}/>
+        <MobileHeader
+          turnOffAnimation={turnOffAnimation}
+          toggleContactModal={toggleContactModal}
+        />
       ) : (
         <nav className={styles.navbar}>
           <div className={styles.navbar_container}>
-            <Link
-              to="/"
-              className={styles.logo}
-              onClick={(e) => {
-                turnOffAnimation();
-                e.preventDefault();
-                navigateWithTransition('/');
-              }}
-            >
-              <img src={avatar} alt="Logo" className={styles.logo_img} />
-            </Link>
+            <div className={styles.navbar_logo_container}>
+              <Link
+                to="/"
+                className={styles.logo}
+                onClick={(e) => {
+                  turnOffAnimation();
+                  e.preventDefault();
+                  navigateWithTransition('/');
+                }}
+              >
+                <img src={avatar} alt="Logo" className={styles.logo_img} />
+              </Link>
+              <h2>SlingShot Dev</h2>
+            </div>
             <ul className={styles.nav_links}>
               <li>
                 <Link
@@ -74,12 +83,12 @@ const Header = ({ turnOffAnimation, toggleContactModal }: HeaderProps): ReactEle
                 </Link>
               </li>
               <li
-                  className={styles.nav_link}
-                  onClick={() => {
-                    toggleContactModal();
-                  }}
-                >
-                  Contact
+                className={styles.nav_link}
+                onClick={() => {
+                  toggleContactModal();
+                }}
+              >
+                Contact
               </li>
             </ul>
           </div>

@@ -31,6 +31,13 @@ $site-color: rgba(11, 34, 41, 0.9);
   align-items: center;
 }
 
+.header_title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+  text-wrap: nowrap;
+}
+
 .logo {
   font-size: 1.125rem;
   .logo_img {
@@ -42,6 +49,7 @@ $site-color: rgba(11, 34, 41, 0.9);
   display: flex;
   flex-direction: column;
   gap: 5px;
+  transform: translateY(2.5px);
   width: 100%;
   max-width: 25px;
   cursor: pointer;
