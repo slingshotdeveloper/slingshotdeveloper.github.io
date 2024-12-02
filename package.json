@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davisdavid/personal-portfolio-ui.git"
+    "url": "git+https://github.com/slingshotdeveloper/slingshotdeveloper.github.io"
   },
   "keywords": [
     "personal-portfolio",
@@ -23,9 +23,9 @@
   "author": "David Davis",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davisdavid/personal-portfolio-ui/issues"
+    "url": "https://github.com/slingshotdeveloper/slingshotdeveloper.github.io/issues"
   },
-  "homepage": "https://github.com/davisdavid/personal-portfolio-ui#readme",
+  "homepage": "https://slingshotdeveloper.github.io/",
   "dependencies": {
     "@types/jest": "^29.5.11",
     "@types/node": "^20.11.7",

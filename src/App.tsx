@@ -7,7 +7,6 @@ import {
 import styles from './App.module.scss';
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 import { NavigationProvider } from './context/NavigationContext';
 import { ContactModal } from './components/ContactModal/ContactModal';
 import About from './pages/About/About';
@@ -62,7 +61,6 @@ const App: React.FC = () => {
         <Route path='/projects' element={<Projects/>}/>
       </Routes>
       <ContactModal isOpen={isContactModalOpen} toggleContactModal={toggleContactModal}/>
-      {/* <Footer /> */}
     </div>
     </NavigationProvider>
   );
