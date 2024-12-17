@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import avatar from '../../assets/images/avatar.png';
+import logo from '../../assets/images/SlingShotDev-logo.png';
 import styles from './Header.module.scss';
 import { useNavigation } from '../../context/NavigationContext';
 import { useMediaQuery } from '../../utils/useMediaQuery';
@@ -38,7 +38,7 @@ const Header = ({
                   navigateWithTransition('/');
                 }}
               >
-                <img src={avatar} alt="Logo" className={styles.logo_img} />
+                <img src={logo} alt="Logo" className={styles.logo_img} />
               </Link>
               <h2>SlingShot Dev</h2>
             </div>

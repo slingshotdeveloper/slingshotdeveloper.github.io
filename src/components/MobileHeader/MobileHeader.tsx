@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import styles from './MobileHeader.module.scss';
-import avatar from '../../assets/images/avatar.png';
+import logo from '../../assets/images/SlingShotDev-logo.png';
 import { useNavigation } from '../../context/NavigationContext';
 import { Link } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ export const MobileHeader = ({
               navigateWithTransition('/');
             }}
           >
-            <img src={avatar} alt="Logo" className={styles.logo_img} />
+            <img src={logo} alt="Logo" className={styles.logo_img} />
           </Link>
           <h2 className={styles.header_title}>SlingShot Dev</h2>
           <div
