@@ -9,12 +9,16 @@ $section-color: rgba(3, 25, 32, 1);
   max-width: 315px !important;
   display: flex;
   flex-direction: column;
-  border: 1px solid $section-color;
+  // border: 1px solid $section-color;
   border-radius: 10px;
   text-align: start;
   overflow: hidden;
   z-index: 20;
   transition: transform 0.2s ease-in-out;
+
+  img {
+    height: 200px;
+  }
 
   &:hover {
     transform: scale(1.03);

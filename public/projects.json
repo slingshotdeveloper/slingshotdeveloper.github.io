@@ -4,20 +4,41 @@
     "url": "https://www.bcubed.com",
     "image": "/assets/images/bcubed-project.png",
     "title": "BCubed Website",
-    "description": "Website built for Engineering company using Wordpress Avada theme."
+    "description": "Website built for Engineering company in Virginia using Wordpress Avada theme."
   },
   {
     "type": "freelance",
     "url": "https://www.cwcwaco.com",
     "image": "/assets/images/cwcwaco-project.png",
     "title": "CWCW Website",
-    "description": "Website built for Complete Women's Care clinic in Waco, TX using Wordpress."
+    "description": "Wordpress website built for Complete Women's Care clinic in Waco, TX using PHP and the Theme File Editor for customization."
   },
   {
     "type": "personal",
     "url": "/",
     "image": "/assets/images/personal-portfolio-project.png",
     "title": "Personal Portfolio",
-    "description": "Website built to showcase development and design experience using React Typescript and Spring Boot Java."
+    "description": "Website built to showcase development and design experience using React Typescript and Java Spring Boot to handle contact functionality."
+  },
+  {
+    "type": "personal",
+    "url": "https://slingshotdeveloper.github.io/gift-list/my-list",
+    "image": "/assets/images/family-gift-list-project.png",
+    "title": "Family Gift List",
+    "description": "Web Application built for family Christmas/Birthday lists where users can customize their list and view others' and mark if they've purchased anything."
+  },
+  {
+    "type": "personal",
+    "url": "https://x.com/SlingshotProps",
+    "image": "/assets/images/betting-odds-EV-bot-project.png",
+    "title": "DFS +EV Bot",
+    "description": "Custom built +EV bot built in Python to find matching props on Daily Fantasy sites, Underdog and Prizepicks, with highest fair probabilities."
+  },
+  {
+    "type": "personal",
+    "url": "",
+    "image": "/assets/images/nba-prop-ml-model-project.png",
+    "title": "NBA Prop ML Model",
+    "description": "Machine Learning Model built in Python to fetch data and make projections for nba props, such as points, assists, and rebounds. (still in progress)"
   }
 ]

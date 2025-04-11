@@ -105,14 +105,14 @@ const About = ({ toggleContactModal }: AboutProps): ReactElement => {
             <div className={styles.text_container}>
               <p>
                 Apart from software development, I enjoy staying active with
-                CrossFit, playing sports, watching movies, and spending time
-                with my wife, family, and friends. I've been doing CrossFit for
-                a few years and love the challenge it brings—I've even competed
-                in a few competitions! I’m a big fan of all sports and have
-                recently been into golf and pickleball. I can easily marathon
-                movies, with The Lord of the Rings trilogy and Miracle being
-                among my favorites. And lastly, I enjoy spending time with my
-                wife, friends, and family, regardless of the activity.
+                CrossFit, playing sports, watching movies, and hanging out with
+                my wife, family, and friends. I've been doing CrossFit for a few
+                years and love the challenge—I've even competed in a few events!
+                I’m a big fan of all sports and have recently taken up golf and
+                pickleball. I can easily marathon movies, with The Lord of the
+                Rings trilogy and Miracle topping my list of favorites. Above
+                all, I cherish quality time with my wife, friends, and family,
+                no matter what we’re doing.
               </p>
             </div>
             <BarbellIcon className={styles.icon} />

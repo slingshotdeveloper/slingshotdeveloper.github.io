@@ -14,8 +14,6 @@ interface Project {
 
 const Projects = (): ReactElement => {
   const [projects, setProjects] = useState<Project[]>([]);
-  const targetRefsFade = useIntersectionObserver(styles.fade_in, 0.6);
-
 
   useEffect(() => {
     axios
@@ -58,12 +56,8 @@ const Projects = (): ReactElement => {
           )}
         </div>
         <div className={styles.personal_section}>
-          <h2 className={styles.personal_section_title} ref={(el) => {
-            if (el) targetRefsFade.current[1] = el;
-          }}>Personal Projects</h2>
-          <div className={`${styles.project_cards} ${styles.personal_section_projects}`} ref={(el) => {
-            if (el) targetRefsFade.current[2] = el;
-          }}>
+          <h2 className={styles.personal_section_title}>Personal Projects</h2>
+          <div className={`${styles.project_cards} ${styles.personal_section_projects}`}>
             {personalProjects.map((project, index) => (
               <ProjectCard
                 key={index}
