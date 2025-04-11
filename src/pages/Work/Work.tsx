@@ -85,7 +85,7 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
   const backendChartData = [
     {
       name: 'Java',
-      value: 60,
+      value: 45,
       info: 'I primarily use Java for my projects and in my full-time role, often opting for Java Spring Boot for API development due to its functionality. For instance, the email feature for contacting me on this site is powered by a Java API.',
       skillLevel: 9,
       radius: 0.55,
@@ -93,8 +93,8 @@ const Work = ({ toggleContactModal }: WorkProps): ReactElement => {
     },
     {
       name: 'Python',
-      value: 12.5,
-      info: 'I find Python to be really enjoyable to work with. I appreciate its concise syntax and the speed at which I can write code. I used it for a web-scraping project and sometimes collaborate with my brother on stock investment analysis and strategy programs using Python.',
+      value: 27.5,
+      info: 'I find Python to be really enjoyable to work with. I appreciate its concise syntax and the speed at which I can write code. I have used it to build sports prop betting models to find the best value for picks and the data behind them.',
       skillLevel: 5,
       radius: 0.65,
       index: 1,
