@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'reac
 import axiosInstance from '../../utils/axiosInstance';
 import styles from './ContactModal.module.scss';
 import { ResponseModal } from './components/ResponseModal/ResponseModal';
+import DOMPurify from 'dompurify';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -31,34 +32,59 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
+    const sanitizedValue = DOMPurify.sanitize(value, {
+      ALLOWED_TAGS: [], // Disallow all HTML tags
+      ALLOWED_ATTR: [], // Disallow all attributes
+    });
 
     switch (name) {
-      case 'firstName':
-        setFirstName(value);
-        if (value.trim() !== '')
+      case 'firstName': {
+        const nameRegex = /^[a-zA-Z\s]*$/;
+        if (!nameRegex.test(sanitizedValue)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            firstName: 'Only letters and spaces allowed',
+          }));
+          return;
+        }
+        setFirstName(sanitizedValue);
+        if (sanitizedValue.trim() !== '')
           setErrors((prevErrors) => ({ ...prevErrors, firstName: '' }));
         break;
-      case 'lastName':
-        setLastName(value);
-        if (value.trim() !== '')
+      }
+      case 'lastName': {
+        const nameRegex = /^[a-zA-Z\s]*$/;
+        if (!nameRegex.test(sanitizedValue)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            lastName: 'Only letters and spaces allowed',
+          }));
+          return;
+        }
+        setLastName(sanitizedValue);
+        if (sanitizedValue.trim() !== '')
           setErrors((prevErrors) => ({ ...prevErrors, lastName: '' }));
         break;
-      case 'email':
-        setEmail(value);
+      }
+      case 'email': {
+        setEmail(sanitizedValue);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailRegex.test(value))
+        if (emailRegex.test(sanitizedValue))
           setErrors((prevErrors) => ({ ...prevErrors, email: '' }));
         break;
-      case 'subject':
-        setSubject(value);
-        if (value.trim() !== '')
+      }
+      case 'subject': {
+        setSubject(sanitizedValue);
+        if (sanitizedValue.trim() !== '')
           setErrors((prevErrors) => ({ ...prevErrors, subject: '' }));
         break;
-      case 'message':
-        setMessage(value);
-        if (value.trim() !== '')
+      }
+      case 'message': {
+        setMessage(sanitizedValue);
+        if (sanitizedValue.trim() !== '')
           setErrors((prevErrors) => ({ ...prevErrors, message: '' }));
         break;
+      }
     }
   };
 
@@ -90,9 +116,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           lastName,
           email,
           subject,
-          message
+          message,
         });
-    
+
         if (response.status === 200) {
           setResponseMessage('success');
           setLoading(false);
@@ -207,15 +233,28 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         <div className={styles.message_field}>
           <label className={errors.message && styles.error}>
             Message:
-            <textarea name="message" value={message} maxLength={750} onChange={handleChange} />
+            <textarea
+              name="message"
+              value={message}
+              maxLength={750}
+              onChange={handleChange}
+            />
             {errors.message && (
               <span className={styles.error_message}>{errors.message}</span>
             )}
           </label>
         </div>
-        <button disabled={loading || (responseMessage === 'success')}>{loading ? 'Sending...' : (responseMessage === 'success') ? 'Sent ✔' : 'Submit'}</button>
+        <button
+          disabled={loading || responseMessage === 'success'}
+        >
+          {loading ? 'Sending...' : responseMessage === 'success' ? 'Sent ✔' : 'Submit'}
+        </button>
       </form>
-      <ResponseModal isOpen={responseMessage !== ''} type={responseMessage} onClose={handleCloseResponseModal} />
+      <ResponseModal
+        isOpen={responseMessage !== ''}
+        type={responseMessage}
+        onClose={handleCloseResponseModal}
+      />
     </div>
   );
 };
